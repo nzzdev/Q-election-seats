@@ -26,11 +26,11 @@ if (!process.env.KEYCDN_API_KEY || !process.env.S3_BUCKET) {
 var keycdn = require('gulp-keycdn');
 var keycdnOptions = {
   apiKey  : process.env.KEYCDN_API_KEY,
-  zoneId  : 22360,
+  zoneId  : process.env.KEYCDN_ZONE_ID,
   method : 'del'
 };
 
-var slug          = 'Q-renderers/chart';
+var slug          = 'Q-renderers/map';
 var deployTargets = [];
 
 // deploy target is different according to branch / tags
@@ -54,15 +54,7 @@ if (process.env.TRAVIS_BRANCH) {
   deployTargets.push(slug + '-' + process.env.TRAVIS_BRANCH);
 }
 
-deployTargets.push(slug + '-dev');
-
-var fastlyPurgeCallback = function(err, result) {
-  if (err) {
-    gutil.log('fastlyPurgeError', err, result);
-  } else {
-    gutil.log('fastlyPurge', result);
-  }
-}
+var newOrUpdatedUrls = [];
 
 function createDeployTask(name, target) {
   gulp.task(name, function() {
@@ -80,10 +72,10 @@ function createDeployTask(name, target) {
           return new_name;
         },
         onChange: function(keyname) {
-          keycdn(keycdnOptions, 'nzzstorytelling-2cac.kxcdn.com/' + keyname);
+          newOrUpdatedUrls.push(process.env.KEYCDN_ZONE_URL + '/' + keyname)
         },
         onNew: function(keyname) {
-          keycdn(keycdnOptions, 'nzzstorytelling-2cac.kxcdn.com/' + keyname);
+          newOrUpdatedUrls.push(process.env.KEYCDN_ZONE_URL + '/' + keyname)
         }
     }));
   });
@@ -97,4 +89,12 @@ for (var target of deployTargets) {
   deployTasks.push(taskName);
 }
 
-gulp.task('deploy', deployTasks);
+gulp.task('deploy', deployTasks, function(callback) {
+  // purge cdn cache
+  if (newOrUpdatedUrls.length > 0) {
+    keycdn(keycdnOptions, {
+      urls: newOrUpdatedUrls
+    });
+  }
+  callback();
+});

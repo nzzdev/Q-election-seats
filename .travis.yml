@@ -13,4 +13,6 @@ script:
 - gulp deploy
 env:
   global:
-  - S3_BUCKET=storytelling.nzz.ch
+  - S3_BUCKET=q-s3.nzz.ch
+  - KEYCDN_ZONE_ID=22499
+  - KEYCDN_ZONE_URL=q-2cac.kxcdn.com
