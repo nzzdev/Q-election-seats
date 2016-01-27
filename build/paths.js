@@ -5,7 +5,7 @@ var appRoot = 'src/';
 module.exports = {
   root: appRoot,
   source: appRoot + '**/*.js',
-  html: appRoot + '**/*.html',
+  source_copy: [appRoot + '**/*.html', appRoot + '**/*.svg'],
   style: appRoot + '**/*.scss',
   output: 'dist/',
   doc:'./doc',
