@@ -1,6 +1,3 @@
-import 'paulirish/matchMedia.js';
-import 'paulirish/matchMedia.js/matchMedia.addListener.js';
-
 import 'core-js/es6/object';
 
 function wrapEmojisInSpan(text) {

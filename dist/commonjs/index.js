@@ -5,10 +5,6 @@ Object.defineProperty(exports, '__esModule', {
 });
 exports.display = display;
 
-require('paulirish/matchMedia.js');
-
-require('paulirish/matchMedia.js/matchMedia.addListener.js');
-
 require('core-js/es6/object');
 
 function wrapEmojisInSpan(text) {

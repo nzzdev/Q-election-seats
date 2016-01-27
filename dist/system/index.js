@@ -1,4 +1,4 @@
-System.register(['paulirish/matchMedia.js', 'paulirish/matchMedia.js/matchMedia.addListener.js', 'core-js/es6/object'], function (_export) {
+System.register(['core-js/es6/object'], function (_export) {
   'use strict';
 
   _export('display', display);
@@ -111,7 +111,7 @@ System.register(['paulirish/matchMedia.js', 'paulirish/matchMedia.js/matchMedia.
   }
 
   return {
-    setters: [function (_paulirishMatchMediaJs) {}, function (_paulirishMatchMediaJsMatchMediaAddListenerJs) {}, function (_coreJsEs6Object) {}],
+    setters: [function (_coreJsEs6Object) {}],
     execute: function () {}
   };
 });

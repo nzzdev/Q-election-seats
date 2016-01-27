@@ -1,4 +1,4 @@
-define(['exports', 'paulirish/matchMedia.js', 'paulirish/matchMedia.js/matchMedia.addListener.js', 'core-js/es6/object'], function (exports, _paulirishMatchMediaJs, _paulirishMatchMediaJsMatchMediaAddListenerJs, _coreJsEs6Object) {
+define(['exports', 'core-js/es6/object'], function (exports, _coreJsEs6Object) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
