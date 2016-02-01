@@ -1,5 +1,7 @@
 import 'core-js/es6/object';
 
+import rendererConfigDefaults from './rendererConfigDefaults';
+
 function wrapEmojisInSpan(text) {
   text = text.replace(
     /([\ud800-\udbff])([\udc00-\udfff])/g,
