@@ -5,7 +5,13 @@ Object.defineProperty(exports, '__esModule', {
 });
 exports.display = display;
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
 require('core-js/es6/object');
+
+var _rendererConfigDefaults = require('./rendererConfigDefaults');
+
+var _rendererConfigDefaults2 = _interopRequireDefault(_rendererConfigDefaults);
 
 function wrapEmojisInSpan(text) {
   text = text.replace(/([\ud800-\udbff])([\udc00-\udfff])/g, '<span class="emoji">$&</span>');
@@ -92,9 +98,9 @@ function display(item, element, rendererConfig) {
         if (!element) throw 'Element is not defined';
 
         if (rendererConfig && typeof rendererConfig === 'object') {
-          rendererConfig = Object.assign(rendererConfigDefaults, rendererConfig);
+          rendererConfig = Object.assign(_rendererConfigDefaults2['default'], rendererConfig);
         } else {
-          rendererConfig = rendererConfigDefaults;
+          rendererConfig = _rendererConfigDefaults2['default'];
         }
 
         var graphic = undefined;

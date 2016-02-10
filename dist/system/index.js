@@ -1,5 +1,7 @@
-System.register(['core-js/es6/object'], function (_export) {
+System.register(['core-js/es6/object', './rendererConfigDefaults'], function (_export) {
   'use strict';
+
+  var rendererConfigDefaults;
 
   _export('display', display);
 
@@ -111,7 +113,9 @@ System.register(['core-js/es6/object'], function (_export) {
   }
 
   return {
-    setters: [function (_coreJsEs6Object) {}],
+    setters: [function (_coreJsEs6Object) {}, function (_rendererConfigDefaults) {
+      rendererConfigDefaults = _rendererConfigDefaults['default'];
+    }],
     execute: function () {}
   };
 });
