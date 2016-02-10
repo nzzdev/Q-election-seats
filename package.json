@@ -15,7 +15,7 @@
   "main": "dist/amd/index.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/nzzdev/Q-chart"
+    "url": "http://github.com/nzzdev/Q-renderer-skeleton"
   },
   "devDependencies": {
     "autoprefixer": "^6.1.0",
