@@ -3,7 +3,7 @@ import 'core-js/es6/object';
 import rendererConfigDefaults from './rendererConfigDefaults';
 
 
-import loadCSS from 'fg-loadcss';
+import {loadCSS} from 'fg-loadcss';
 import onloadCSS from './resources/onloadCSS';
 
 
