@@ -58,6 +58,7 @@
     },
     "dependencies": {
       "css": "github:systemjs/plugin-css@^0.1.19",
+      "fg-loadcss": "npm:fg-loadcss@^1.0.0-0",
       "text": "github:systemjs/plugin-text@^0.0.3"
     },
     "devDependencies": {
