@@ -30,7 +30,7 @@ var keycdnOptions = {
   method : 'del'
 };
 
-var slug          = 'Q-renderers/map';
+var slug          = 'Q-renderers/renderer-skeleton';
 var deployTargets = [];
 
 // deploy target is different according to branch / tags
