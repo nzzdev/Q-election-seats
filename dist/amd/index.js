@@ -1,4 +1,4 @@
-define(['exports', 'core-js/es6/object', './rendererConfigDefaults'], function (exports, _coreJsEs6Object, _rendererConfigDefaults) {
+define(['exports', 'core-js/es6/object', './rendererConfigDefaults', 'fg-loadcss', './resources/onloadCSS'], function (exports, _coreJsEs6Object, _rendererConfigDefaults, _fgLoadcss, _resourcesOnloadCSS) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {
@@ -9,6 +9,8 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults'], function (
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
   var _rendererConfigDefaults2 = _interopRequireDefault(_rendererConfigDefaults);
+
+  var _onloadCSS = _interopRequireDefault(_resourcesOnloadCSS);
 
   function wrapEmojisInSpan(text) {
     text = text.replace(/([\ud800-\udbff])([\udc00-\udfff])/g, '<span class="emoji">$&</span>');
@@ -102,11 +104,26 @@ define(['exports', 'core-js/es6/object', './rendererConfigDefaults'], function (
 
           var graphic = undefined;
 
-          var themeUrl = rendererConfig.themeUrl || rendererConfig.rendererBaseUrl + 'themes/' + rendererConfig.theme;
-          System['import'](themeUrl + '/styles.css!');
+          var rendererPromises = [];
+
+          if (rendererConfig.loadStyles) {
+            (function () {
+              var themeUrl = rendererConfig.themeUrl || rendererConfig.rendererBaseUrl + 'themes/' + rendererConfig.theme;
+              var themeLoadCSS = (0, _fgLoadcss.loadCSS)(themeUrl + '/styles.css');
+              var themeLoadPromise = new Promise(function (resolve, reject) {
+                (0, _onloadCSS['default'])(themeLoadCSS, function () {
+                  resolve();
+                });
+              });
+              rendererPromises.push(themeLoadPromise);
+            })();
+          }
 
           render(item.element).then(function () {
-            resolve(graphic);
+            resolve({
+              graphic: graphic,
+              promises: rendererPromises
+            });
           })['catch'](function (e) {
             reject(e);
           });

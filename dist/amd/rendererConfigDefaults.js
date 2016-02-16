@@ -3,6 +3,7 @@ define(['exports', 'module'], function (exports, module) {
 
   module.exports = {
     theme: 'default',
+    loadStyles: true,
     rendererBaseUrl: ''
   };
 });

@@ -3,6 +3,10 @@ import 'core-js/es6/object';
 import rendererConfigDefaults from './rendererConfigDefaults';
 
 
+import {loadCSS} from 'fg-loadcss';
+import onloadCSS from './resources/onloadCSS';
+
+
 // import SizeObserver from './resources/SizeObserver';
 // var sizeObserver = new SizeObserver();
 
@@ -77,8 +81,18 @@ export function display(item, element, rendererConfig, withoutContext = false) {
 
       let graphic;
 
-      let themeUrl = rendererConfig.themeUrl || `${rendererConfig.rendererBaseUrl}themes/${rendererConfig.theme}`;
-      System.import(`${themeUrl}/styles.css!`);
+      let rendererPromises = [];
+
+      if (rendererConfig.loadStyles) {
+        let themeUrl = rendererConfig.themeUrl || `${rendererConfig.rendererBaseUrl}themes/${rendererConfig.theme}`;
+        let themeLoadCSS = loadCSS(`${themeUrl}/styles.css`);
+        let themeLoadPromise = new Promise((resolve, reject) => {
+          onloadCSS(themeLoadCSS, () => {
+            resolve();
+          });
+        });
+        rendererPromises.push(themeLoadPromise);
+      }
 
       // use this if your rendering is depending on container size
 
@@ -95,14 +109,20 @@ export function display(item, element, rendererConfig, withoutContext = false) {
       //     reject(e);
       //   }
         
-      //   resolve(graphic);
+      //   resolve({
+            //   graphic: graphic,
+            //   promises: rendererPromises
+            // });
 
       // }, element, true);
 
       // use this if container size doesn't influence your rendering
       render(item.element)
         .then(() => {
-          resolve(graphic);
+          resolve({
+              graphic: graphic,
+              promises: rendererPromises
+            });
         })
         .catch((e) => {
           reject(e);

@@ -11,7 +11,7 @@ var package = JSON.parse(fs.readFileSync('./package.json'));
 
 gulp.task('setup-env', function(cb) {
   var env = {
-    VERSION: package.version,
+    VERSION: package.version === '0.0.0' ? 'dev' : package.version,
   }
 
   fs.mkdir(paths.output, function() {

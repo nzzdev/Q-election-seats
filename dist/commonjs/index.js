@@ -13,6 +13,12 @@ var _rendererConfigDefaults = require('./rendererConfigDefaults');
 
 var _rendererConfigDefaults2 = _interopRequireDefault(_rendererConfigDefaults);
 
+var _fgLoadcss = require('fg-loadcss');
+
+var _resourcesOnloadCSS = require('./resources/onloadCSS');
+
+var _resourcesOnloadCSS2 = _interopRequireDefault(_resourcesOnloadCSS);
+
 function wrapEmojisInSpan(text) {
   text = text.replace(/([\ud800-\udbff])([\udc00-\udfff])/g, '<span class="emoji">$&</span>');
   return text;
@@ -105,11 +111,26 @@ function display(item, element, rendererConfig) {
 
         var graphic = undefined;
 
-        var themeUrl = rendererConfig.themeUrl || rendererConfig.rendererBaseUrl + 'themes/' + rendererConfig.theme;
-        System['import'](themeUrl + '/styles.css!');
+        var rendererPromises = [];
+
+        if (rendererConfig.loadStyles) {
+          (function () {
+            var themeUrl = rendererConfig.themeUrl || rendererConfig.rendererBaseUrl + 'themes/' + rendererConfig.theme;
+            var themeLoadCSS = (0, _fgLoadcss.loadCSS)(themeUrl + '/styles.css');
+            var themeLoadPromise = new Promise(function (resolve, reject) {
+              (0, _resourcesOnloadCSS2['default'])(themeLoadCSS, function () {
+                resolve();
+              });
+            });
+            rendererPromises.push(themeLoadPromise);
+          })();
+        }
 
         render(item.element).then(function () {
-          resolve(graphic);
+          resolve({
+            graphic: graphic,
+            promises: rendererPromises
+          });
         })['catch'](function (e) {
           reject(e);
         });

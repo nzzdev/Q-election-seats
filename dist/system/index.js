@@ -1,7 +1,7 @@
-System.register(['core-js/es6/object', './rendererConfigDefaults'], function (_export) {
+System.register(['core-js/es6/object', './rendererConfigDefaults', 'fg-loadcss', './resources/onloadCSS'], function (_export) {
   'use strict';
 
-  var rendererConfigDefaults;
+  var rendererConfigDefaults, loadCSS, onloadCSS;
 
   _export('display', display);
 
@@ -97,11 +97,26 @@ System.register(['core-js/es6/object', './rendererConfigDefaults'], function (_e
 
           var graphic = undefined;
 
-          var themeUrl = rendererConfig.themeUrl || rendererConfig.rendererBaseUrl + 'themes/' + rendererConfig.theme;
-          System['import'](themeUrl + '/styles.css!');
+          var rendererPromises = [];
+
+          if (rendererConfig.loadStyles) {
+            (function () {
+              var themeUrl = rendererConfig.themeUrl || rendererConfig.rendererBaseUrl + 'themes/' + rendererConfig.theme;
+              var themeLoadCSS = loadCSS(themeUrl + '/styles.css');
+              var themeLoadPromise = new Promise(function (resolve, reject) {
+                onloadCSS(themeLoadCSS, function () {
+                  resolve();
+                });
+              });
+              rendererPromises.push(themeLoadPromise);
+            })();
+          }
 
           render(item.element).then(function () {
-            resolve(graphic);
+            resolve({
+              graphic: graphic,
+              promises: rendererPromises
+            });
           })['catch'](function (e) {
             reject(e);
           });
@@ -115,6 +130,10 @@ System.register(['core-js/es6/object', './rendererConfigDefaults'], function (_e
   return {
     setters: [function (_coreJsEs6Object) {}, function (_rendererConfigDefaults) {
       rendererConfigDefaults = _rendererConfigDefaults['default'];
+    }, function (_fgLoadcss) {
+      loadCSS = _fgLoadcss.loadCSS;
+    }, function (_resourcesOnloadCSS) {
+      onloadCSS = _resourcesOnloadCSS['default'];
     }],
     execute: function () {}
   };
