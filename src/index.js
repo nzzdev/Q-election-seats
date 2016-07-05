@@ -49,7 +49,7 @@ function getContextHtml(item) {
 function displayWithContext(item, element) {
   let el = document.createElement('section');
   el.setAttribute('class','q-renderer-item');                     // <-- replace this classname probably
-  el.innerHTML = getContextHtml(item, chartistConfig);
+  el.innerHTML = getContextHtml(item);
   while (element.firstChild) {
     element.removeChild(element.firstChild);
   }
