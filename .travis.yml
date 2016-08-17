@@ -11,6 +11,9 @@ install:
 script:
 - gulp bundle
 - gulp deploy
+cache:
+  directories:
+  - node_modules
 env:
   global:
   - S3_BUCKET=q-s3.nzz.ch
