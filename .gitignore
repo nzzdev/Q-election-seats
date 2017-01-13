@@ -1,10 +1,2 @@
 node_modules
-jspm_packages
-.idea
 .DS_STORE
-.env.json
-build/reports
-deployable-build
-dist/env.json
-dist/*/dev-view.js
-dist/*/dev-styles.css

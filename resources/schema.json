@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "annotations": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "data": {
+			"type": "object",
+			"properties": {
+				"sampleProperty": {
+					"type": "string"
+				}
+			}
+		}
+  },
+  "required": [
+    "title",
+    "data"
+  ]
+}
