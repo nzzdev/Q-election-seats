@@ -30,12 +30,19 @@
     "url": "git+https://github.com/nzzdev/Q-renderer-skeleton.git"
   },
   "dependencies": {
+    "autoprefixer": "^6.7.2",
+    "d3": "^4.5.0",
     "enjoi": "^2.1.0",
+    "forever": "^0.15.3",
     "hapi": "^16.1.0",
     "hoek": "^4.1.0",
     "inert": "^4.1.0",
+    "joi": "^10.2.2",
+    "jsdom": "^9.11.0",
     "json-schema-faker": "^0.4.0",
+    "lodash": "^4.17.4",
     "node-sass": "^4.3.0",
+    "postcss": "^5.2.13",
     "svelte": "^1.6.3"
   }
 }

@@ -1,3 +1,83 @@
-<!-- tiny example to show how svelte templating works -->
-<h3>{{title}}</h3>
-<div>Sample property: {{toolSpecificSample.sampleProperty}}</div>
+<Header title='{{title}}' subtitle='{{subtitle}}' />
+<div class="q-election-seat-svg-container"></div>
+<div class="q-election-seat-legend">
+  {{#each enhancedParties as partiesHalf}}
+    <ElectionItems parties='{{partiesHalf}}' />
+  {{/each}}
+</div>
+<Footer notes='{{notes}}' sources='{{sources}}' maxResult='{{maxResult}}' updatedDate='{{updatedDate}}' />
+
+
+<script>
+  import Header from './Header.html';
+  import Footer from './Footer.html';
+  import ElectionItems from './ElectionItems.html';
+
+  export default {
+    computed: {
+      sortedParties: (parties) => {
+        if (parties !== undefined) {
+          return parties.sort((partyA, partyB) => {
+            if (partyA.seats === undefined) {
+              partyA.seats = 0;
+            }
+            if (partyB.seats === undefined) {
+              partyB.seats = 0;
+            }
+            return partyB.seats - partyA.seats;
+          })
+        } else {
+          return [];
+        }
+      },
+      enhancedParties: (sortedParties) => {
+        sortedParties.forEach(party => {
+          // define color of each party's bar either via class attribute or color code
+          let colorStyle = '';
+          let colorClass = '';
+          if (party.color) {
+            if (party.color.classAttribute) {
+              colorClass = party.color.classAttribute;
+            } else {
+              colorStyle = 'background-color: ' + party.color.colorCode + ';';
+            }
+          }
+          party.colorClass = colorClass;
+          party.colorStyle = colorStyle;
+
+          if (party.seats) {
+            if (party.previous) {
+              party.trend = party.seats - party.previous;
+            } else {
+              party.trend = party.seats;
+            }
+            // which number should be max? 5 seems to be a bit low
+            let trendDegree = (Math.min(Math.abs(party.trend),5) * 90) / 5
+            if (party.trend > 0 ) {
+              trendDegree = -trendDegree;
+            }
+            party.trendDegree = trendDegree;
+          }
+
+          let stringPattern = /((.*(A|a)ndere.*)|(.*(S|s)onstig.*)|(.*(V|v)akant.*))/;
+          party.isRealParty = !stringPattern.test(party.abbreviation);
+        })
+
+        let half = Math.ceil(sortedParties.length / 2);
+        let partiesFirstHalf = sortedParties.slice(0, half);
+        let partiesSecondHalf = sortedParties.slice(half);
+        sortedParties = [partiesFirstHalf, partiesSecondHalf];
+        return sortedParties;
+      },
+      maxResult: (sortedParties) => {
+        console.log(sortedParties[0].seats);
+        return sortedParties[0].seats;
+      }
+    },
+    components: {
+      Header,
+      ElectionItems,
+      Footer
+    }
+  };
+</script>

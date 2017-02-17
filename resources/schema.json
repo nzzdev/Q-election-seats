@@ -1,34 +1,86 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
+  "title": "Parlamentswahlen Sitzverteilung",
   "properties": {
     "title": {
+      "title": "Titel",
       "type": "string"
     },
-    "annotations": {
+    "subtitle": {
+      "title": "Untertitel",
       "type": "string"
     },
-    "toolSpecificSample": {
-      "type": "object",
-      "properties": {
-        "sampleProperty": {
-          "type": "string"
+    "totalSeats": {
+      "title": "Total verfügbarer Sitze",
+      "type": "number"
+    },
+    "parties": {
+      "title": "Parteien",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "title": "Parteiname",
+            "type": "string"
+          },
+          "abbreviation": {
+            "title": "Kürzel",
+            "type": "string"
+          },
+          "color": {
+            "title": "Farbe",
+            "type": "object",
+            "properties": {
+              "colorCode": {
+                "title": "Farbcode",
+                "type": "string"
+              },
+              "classAttribute": {
+                "title": "CSS Klassename",
+                "type": "string"
+              }
+            }
+          },
+          "seats": {
+            "title": "Anzahl Sitze",
+            "type": "number"
+          },
+          "previous": {
+            "title": "Anzahl Sitze letzte Wahl",
+            "type": "number"
+          }
         }
       }
     },
+    "notes": {
+      "title": "Bemerkungen",
+      "type": "string"
+    },
     "sources": {
+      "title": "Quellen",
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
           "text": {
+            "title": "Text",
             "type": "string"
           },
-          "href": {
-            "type": "string"
-          },
-          "validHref": {
-            "type": "boolean"
+          "link": {
+            "Q:type": "link",
+            "title": "Link",
+            "type": "object",
+            "properties": {
+              "url": {
+                "title": "Url",
+                "type": "string"
+              },
+              "isValid": {
+                "type": "boolean"
+              }    
+            }
           }
         }
       }
