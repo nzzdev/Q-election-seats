@@ -33,7 +33,7 @@
           return [];
         }
       },
-      enhancedParties: (sortedParties) => {
+      enhancedParties: (sortedParties, totalSeats) => {
         sortedParties.forEach(party => {
           // define color of each party's arc either via class attribute or color code
           let colorStyle = '';
@@ -55,7 +55,11 @@
             } else {
               party.trend = party.seats;
             }
-            let trendDegree = (Math.min(Math.abs(party.trend),10) * 90) / 10
+
+            // max amplitude of the trend arrow is 90° plus or minus
+            // this correlates to gaining or loosing 5% of total available seats
+            let maxAmp = (totalSeats * 5) / 100;
+            let trendDegree = (Math.min(Math.abs(party.trend),maxAmp) * 90) / maxAmp;
             if (party.trend > 0 ) {
               trendDegree = -trendDegree;
             }
