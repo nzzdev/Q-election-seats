@@ -34,7 +34,7 @@ $totalSeatsHeight: 36px;
 
   &-text-container {
     position: relative;
-    top: -36px;
+    top: -$totalSeatsHeight;
   }
 
   &-legend {
