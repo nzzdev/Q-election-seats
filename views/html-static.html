@@ -3,8 +3,8 @@
 <div class="q-election-seat-total s-font-note">{{totalSeats}} Sitze</div>
 <div class="q-election-seat-text-container">
   <div class="q-election-seat-legend">
-    {{#each enhancedParties as partiesHalf}}
-      <ElectionItems parties='{{partiesHalf}}' />
+    {{#each partyBunches as partyBunch}}
+      <ElectionItems parties='{{partyBunch}}' />
     {{/each}}
   </div>
   <Footer notes='{{notes}}' sources='{{sources}}' maxResult='{{maxResult}}' updatedDate='{{updatedDate}}' />
@@ -33,7 +33,7 @@
           return [];
         }
       },
-      enhancedParties: (sortedParties, totalSeats) => {
+      partyBunches: (sortedParties, totalSeats) => {
         sortedParties.forEach(party => {
           // define color of each party's arc either via class attribute or color code
           let colorStyle = '';
@@ -66,11 +66,13 @@
             party.trendDegree = trendDegree;
           }
 
-          // seat numbers which belong to 
+          // parties which are summarized under "others" or vacancies will not have a trend
           let stringPattern = /((.*(A|a)ndere.*)|(.*(S|s)onstig.*)|(.*(V|v)akant.*))/;
           party.isRealParty = !stringPattern.test(party.name);
         })
 
+        // split party array into two halfs and create another array out of it
+        // in order to make a two columned legend if width is sufficient
         let half = Math.ceil(sortedParties.length / 2);
         let partiesFirstHalf = sortedParties.slice(0, half);
         let partiesSecondHalf = sortedParties.slice(half);
