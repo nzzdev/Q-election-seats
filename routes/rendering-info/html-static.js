@@ -30,11 +30,9 @@ function getMarkupWithSeatSvg(parties, markup, width) {
         }
         let height = width / 2;
         let radius = width / 2;
-        let svgContainerElement = window.document.getElementsByClassName('q-election-seat-svg-container');
+        let svgContainerElement = window.document.getElementById('q-election-seat-svg-container');
         
-        if (svgContainerElement && svgContainerElement.length === 1) {
-          svgContainerElement = svgContainerElement[0];
-
+        if (svgContainerElement) {
           let svg = d3.select(svgContainerElement)
             .append('svg')
             .attr('viewbox', '0 0 ' + width + ' ' + height)
@@ -58,18 +56,18 @@ function getMarkupWithSeatSvg(parties, markup, width) {
             .data(pie(parties))
             .enter()
             .append('path')
-            .attr('class', (data, index) => {
-              if (data.data.color && data.data.color.classAttribute) {
-                return data.data.color.classAttribute;
+            .attr('class', (parties) => {
+              if (parties.data.color && parties.data.color.classAttribute) {
+                return parties.data.color.classAttribute;
               } else {
                 return '';
               }
             })
             .attr('d', arc)
             .attr('stroke', '#f5f5f5')
-            .attr('fill', (data, index) => {
-              if (data.data.color && data.data.color.classAttribute === undefined) {
-                return data.data.color.colorCode;
+            .attr('fill', (parties) => {
+              if (parties.data.color && parties.data.color.classAttribute === undefined) {
+                return parties.data.color.colorCode;
               } else {
                 return 'currentColor';
               }
@@ -132,10 +130,6 @@ module.exports = {
     }
 
     let width = 540;
-    if (request.params.width) {
-      width = request.params.width;
-    }
-    console.log(width);
     return getMarkupWithSeatSvg(request.payload.item.parties, svelteMarkup, width)
       .then(result => {
         data.markup = result;

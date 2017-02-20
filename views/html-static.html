@@ -1,12 +1,14 @@
 <Header title='{{title}}' subtitle='{{subtitle}}' />
-<div class="q-election-seat-svg-container"></div>
+<div id="q-election-seat-svg-container" class="q-election-seat-svg-container"></div>
 <div class="q-election-seat-total s-font-note">{{totalSeats}} Sitze</div>
-<div class="q-election-seat-legend">
-  {{#each enhancedParties as partiesHalf}}
-    <ElectionItems parties='{{partiesHalf}}' />
-  {{/each}}
+<div class="q-election-seat-text-container">
+  <div class="q-election-seat-legend">
+    {{#each enhancedParties as partiesHalf}}
+      <ElectionItems parties='{{partiesHalf}}' />
+    {{/each}}
+  </div>
+  <Footer notes='{{notes}}' sources='{{sources}}' maxResult='{{maxResult}}' updatedDate='{{updatedDate}}' />
 </div>
-<Footer notes='{{notes}}' sources='{{sources}}' maxResult='{{maxResult}}' updatedDate='{{updatedDate}}' />
 
 
 <script>
@@ -33,7 +35,7 @@
       },
       enhancedParties: (sortedParties) => {
         sortedParties.forEach(party => {
-          // define color of each party's bar either via class attribute or color code
+          // define color of each party's arc either via class attribute or color code
           let colorStyle = '';
           let colorClass = '';
           if (party.color) {
@@ -46,22 +48,23 @@
           party.colorClass = colorClass;
           party.colorStyle = colorStyle;
 
+          // calculate trend and degree of trend arrow
           if (party.seats) {
             if (party.previous) {
               party.trend = party.seats - party.previous;
             } else {
               party.trend = party.seats;
             }
-            // which number should be max? 5 seems to be a bit low
-            let trendDegree = (Math.min(Math.abs(party.trend),5) * 90) / 5
+            let trendDegree = (Math.min(Math.abs(party.trend),10) * 90) / 10
             if (party.trend > 0 ) {
               trendDegree = -trendDegree;
             }
             party.trendDegree = trendDegree;
           }
 
+          // seat numbers which belong to 
           let stringPattern = /((.*(A|a)ndere.*)|(.*(S|s)onstig.*)|(.*(V|v)akant.*))/;
-          party.isRealParty = !stringPattern.test(party.abbreviation);
+          party.isRealParty = !stringPattern.test(party.name);
         })
 
         let half = Math.ceil(sortedParties.length / 2);
@@ -71,7 +74,6 @@
         return sortedParties;
       },
       maxResult: (sortedParties) => {
-        console.log(sortedParties[0].seats);
         return sortedParties[0].seats;
       }
     },

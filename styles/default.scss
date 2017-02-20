@@ -32,74 +32,79 @@ $totalSeatsHeight: 36px;
     text-align: center;
   }
 
+  &-text-container {
+    position: relative;
+    top: -36px;
+  }
+
   &-legend {
-    margin-top: 25px;
+    margin-top: 22px;
     display: flex;
     flex-wrap: wrap;
   }
-  
-  &-parties-list {
-    flex-grow: 1;
-    min-width: 250px;
-  }
 
   &-party {
-    &-text {
+    &-list {
+      flex-grow: 1;
+      min-width: 250px;
+    }
+
+    &-item {
       clear: left;
       height: 18px;
       margin-bottom: 8px;
-    }
 
-    &-info {
-      float: left;
-      width: 45%;
-
-      &-color {
-        background-color: currentColor;
-        width: 16px;
-        height: 16px;
+      &-info {
         float: left;
+        width: 45%;
+
+        &-color {
+          background-color: currentColor;
+          width: 16px;
+          height: 16px;
+          float: left;
+        }
+        &-name {
+          float: left;
+          margin-left: 8px;
+        }  
       }
-      &-name {
+
+      &-seats {
         float: left;
-        margin-left: 8px;
-      }  
-    }
+        width: 25%;
 
-    &-seats {
-      float: left;
-      width: 25%;
+        &-text,
+        &-number {
+          float:left;
+        }
 
-      &-text,
-      &-number {
-        float:left;
+        &-number {
+          margin-right: 3px;
+          width: 30px;
+          text-align: right;
+        }
       }
 
-      &-number {
-        margin-right: 3px;
-        width: 30px;
-        text-align: right;
-      }
-    }
+      &-trend {
+        float: left;
+        width: 20%;
 
-    &-trend {
-      float: left;
-      width: 20%;
+        &-text,
+        &-number {
+          float:left;
+        }
 
-      &-text,
-      &-number {
-        float:left;
+        &-number {
+          margin-right: 3px;
+          width: 30px;
+          text-align: right;
+        }
       }
-
-      &-number {
-        margin-right: 3px;
-        width: 30px;
-        text-align: right;
-      }
-    }
+    } 
   }
 
   &-footer {
-    margin-top: 16px;
+    margin-top: 8px;
   }
 }

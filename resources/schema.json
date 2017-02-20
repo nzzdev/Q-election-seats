@@ -22,11 +22,7 @@
         "type": "object",
         "properties": {
           "name": {
-            "title": "Parteiname",
-            "type": "string"
-          },
-          "abbreviation": {
-            "title": "Kürzel",
+            "title": "Parteiname (Kürzel)",
             "type": "string"
           },
           "color": {

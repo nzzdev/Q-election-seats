@@ -24,7 +24,6 @@
   export default {
     computed: {
       updateInfo: (updatedDate) => {
-        console.log(updatedDate);
         let updated = new Date(updatedDate);
         if (updated.getTime()) {
           let now = new Date();

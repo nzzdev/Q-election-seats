@@ -31,8 +31,7 @@
           "totalSeats": 200,
           "parties": [
             {
-              "name": "Die Union",
-              "abbreviation": "CDU/CSU",
+              "name": "CDU/CSU",
               "color": 
                 {
                   "colorCode": "#0084c7"
@@ -41,8 +40,7 @@
               "previous": 71
             },
             {
-              "name": "Sozialdemokratische Partei Deutschlands",
-              "abbreviation": "SPD",
+              "name": "SPD",
               "color": 
                 {
                   "colorCode": "#c31906",
@@ -52,8 +50,7 @@
               "previous": 75
             },
             {
-              "name": "Bündnis 90/Die Grünen",
-              "abbreviation": "Die Grünen",
+              "name": "Die Grünen",
               "color": 
                 {
                   "colorCode": "#66a622"
@@ -63,7 +60,6 @@
             },
             {
               "name": "Die Linke",
-              "abbreviation": "Die Linke",
               "color": 
               {
                 "colorCode": "#a35fd1"
@@ -73,7 +69,6 @@
             },
             {
               "name": "vakant",
-              "abbreviation": "vakant",
               "color":
               {
                 "colorCode": "#5c5c5c",
@@ -88,9 +83,6 @@
         }
       };
 
-      let containerWidth = window.document.getElementById('container').offsetWidth;
-      console.log('container width: ' + containerWidth);
-
       fetch(`http://localhost:3000/rendering-info/html-static?updatedDate=2017-02-09T17:16:49.120Z`, {
           method: 'POST',
           body: JSON.stringify(data),
@@ -102,7 +94,6 @@
           return response.json();
         })
         .then(data => {
-          console.log(data.markup);
           data.stylesheets.forEach(stylesheet => {
             if (stylesheet.name) {
               stylesheet.url = `http://localhost:3000/stylesheet/${stylesheet.name}`
