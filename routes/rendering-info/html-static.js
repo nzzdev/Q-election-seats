@@ -37,13 +37,12 @@ function getMarkupWithSeatSvg(parties, markup, width) {
 
           let svg = d3.select(svgContainerElement)
             .append('svg')
-            .attr('width', width)
-            .attr('height', height)
+            .attr('viewbox', '0 0 ' + width + ' ' + height)
+            .attr('class', 'q-election-seat-svg-content')
             .append('g')
             .attr('transform', 'translate('+ (width / 2) + ',' + height +')');
           
           let arc = d3.arc()
-            //check if this is good  
             .innerRadius(radius / 3)
             .outerRadius(radius);
 
@@ -84,7 +83,7 @@ function getMarkupWithSeatSvg(parties, markup, width) {
 
 module.exports = {
 	method: 'POST',
-	path: '/rendering-info/html-static/{width}',
+	path: '/rendering-info/html-static',
 	config: {
 		validate: {
       options: {
@@ -132,7 +131,12 @@ module.exports = {
       });
     }
 
-    return getMarkupWithSeatSvg(request.payload.item.parties, svelteMarkup, request.params.width)
+    let width = 540;
+    if (request.params.width) {
+      width = request.params.width;
+    }
+    console.log(width);
+    return getMarkupWithSeatSvg(request.payload.item.parties, svelteMarkup, width)
       .then(result => {
         data.markup = result;
         return reply(data);
