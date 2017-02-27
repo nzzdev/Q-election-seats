@@ -31,7 +31,7 @@ function getMarkupWithSeatSvg(parties, markup, width) {
         let height = width / 2;
         let radius = width / 2;
         let svgContainerElement = window.document.getElementById('q-election-seat-svg-container');
-        
+
         if (svgContainerElement) {
           let svg = d3.select(svgContainerElement)
             .append('svg')

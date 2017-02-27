@@ -34,6 +34,24 @@
         }
       },
       partyBunches: (sortedParties, totalSeats) => {
+        // add party object for vacant seats if total available seats 
+        // is bigger than sum of all parties' seats
+        let sumSeats = sortedParties
+          .map(party => party.seats)
+          .reduce((sum, partySeats) => {
+            return sum + partySeats;
+          }, 0);
+        let vacantSeats = totalSeats - sumSeats;
+        if (vacantSeats > 0) {
+          sortedParties.push({
+            name: 'vakant',
+            color: {
+              classAttribute: 's-color-gray-4'
+            },
+            seats: vacantSeats
+          })
+        }
+        
         sortedParties.forEach(party => {
           // define color of each party's arc either via class attribute or color code
           let colorStyle = '';

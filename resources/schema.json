@@ -83,6 +83,6 @@
     }
   },
   "required": [
-    "title"
+    "title", "totalSeats"
   ]
 }
