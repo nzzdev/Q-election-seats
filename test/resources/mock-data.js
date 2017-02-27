@@ -41,8 +41,8 @@ module.exports = {
         {
           colorCode: "#66a622"
         },
-      previous: 20,
-      seats: 24
+      seats: 30,
+      previous: 24
     },
     {
       name: "Die Linke",
@@ -51,18 +51,8 @@ module.exports = {
       {
         colorCode: "#a35fd1"
       },
-      previous: 10,
-      seats: 20
-    },
-    {
-      name: "vakant",
-      abbreviation: "vakant",
-      color:
-      {
-        colorCode: "#5c5c5c",
-        classAttribute: "s-color-gray-6"
-      },
-      seats: 1
+      seats: 20,
+      previous: 15
     }
   ]
 }
