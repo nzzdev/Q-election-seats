@@ -1,14 +1,14 @@
 {
-  "name": "@nzz/q-renderer-skeleton",
+  "name": "@nzz/q-election-seats",
   "version": "1.0.0",
-  "description": "Q renderer skeleton",
+  "description": "Q Election Seats",
   "keywords": [
     "storytelling",
     "nzz"
   ],
-  "homepage": "https://github.com/nzzdev/Q-renderer-skeleton",
+  "homepage": "https://github.com/nzzdev/Q-election-seats",
   "bugs": {
-    "url": "https://github.com/nzzdev/Q-renderer-skeleton/issues"
+    "url": "https://github.com/nzzdev/Q-election-seats/issues"
   },
   "license": "",
   "contributors": [
@@ -27,15 +27,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nzzdev/Q-renderer-skeleton.git"
+    "url": "git+https://github.com/nzzdev/Q-election-seats.git"
   },
   "dependencies": {
+    "autoprefixer": "^6.7.2",
+    "chai": "^3.5.0",
+    "d3": "^4.5.0",
     "enjoi": "^2.1.0",
+    "forever": "^0.15.3",
     "hapi": "^16.1.0",
     "hoek": "^4.1.0",
     "inert": "^4.1.0",
+    "joi": "^10.2.2",
+    "jsdom": "^9.11.0",
     "json-schema-faker": "^0.4.0",
+    "lodash": "^4.17.4",
+    "mocha": "^3.2.0",
     "node-sass": "^4.3.0",
-    "svelte": "^1.6.3"
+    "postcss": "^5.2.13",
+    "svelte": "1.6.3"
   }
 }
