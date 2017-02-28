@@ -18,6 +18,11 @@
     "parties": {
       "title": "Parteien",
       "type": "array",
+      "Q:options": {
+        "expandable": {
+          "itemLabelProperty": "name"
+        }
+      },
       "items": {
         "type": "object",
         "properties": {
