@@ -5,12 +5,12 @@
         <div class="q-election-seat-party-item-info-color {{party.colorClass}}" style='{{party.colorStyle}}'></div>
         <div class="q-election-seat-party-item-info-name s-font-title-xs">{{party.name}}</div>
       </div>
-      {{#if party.seats}}
+      {{#if party.hasSeats}}
         <div class="q-election-seat-party-item-seats s-font-note-s">
           <div class="q-election-seat-party-item-seats-number">{{party.seats}}</div>
           <div class="q-election-seat-party-item-seats-text">Sitz{{#if party.seats > 1 || party.seats === 0}}e{{/if}}</div>
         </div>
-        {{#if party.isRealParty}}
+        {{#if !party.isVacant && party.hasPrevious}}
           <div class="q-election-seat-party-item-trend">
             <div class="q-election-seat-party-item-trend-number s-font-note-s">{{#if party.trend > 0}}+{{/if}}{{party.trend}}</div> 
             <svg class="q-election-seat-party-item-trend-image s-color-gray-8" style="transform: rotate({{party.trendDegree}}deg);" width=14 height=14 viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">

@@ -67,10 +67,13 @@
           party.colorStyle = colorStyle;
 
           // calculate trend and degree of trend arrow
-          if (party.seats) {
-            if (party.previous) {
+          if (party.seats !== undefined) {
+            party.hasSeats = true;
+            if (party.previous !== undefined) {
+              party.hasPrevious = true;
               party.trend = party.seats - party.previous;
             } else {
+              party.hasPrevious = false;
               party.trend = party.seats;
             }
 
@@ -82,11 +85,13 @@
               trendDegree = -trendDegree;
             }
             party.trendDegree = trendDegree;
+          } else {
+            party.hasSeats = false;
           }
 
           // parties which are summarized under "others" or vacancies will not have a trend
-          let stringPattern = /((.*(A|a)ndere.*)|(.*(S|s)onstig.*)|(.*(V|v)akant.*))/;
-          party.isRealParty = !stringPattern.test(party.name);
+          let vacantPattern = /(.*(V|v)akant.*)/;
+          party.isVacant = vacantPattern.test(party.name);
         })
 
         // split party array into two halfs and create another array out of it
