@@ -12,7 +12,7 @@
         </div>
         {{#if !party.isVacant && party.hasPrevious}}
           <div class="q-election-seat-party-item-trend">
-            <div class="q-election-seat-party-item-trend-number s-font-note-s">{{#if party.trend > 0}}+{{/if}}{{party.trend}}</div> 
+            <div class="q-election-seat-party-item-trend-number s-font-note-s">{{#if party.trend > 0}}+{{/if}}{{#if party.trend !== 0}}{{party.trend}}{{/if}}</div> 
             <svg class="q-election-seat-party-item-trend-image s-color-gray-8" style="transform: rotate({{party.trendDegree}}deg);" width=14 height=14 viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
               <g fill="currentColor" fill-rule="evenodd">
                 <path d="M11.096 11.096a6.5 6.5 0 1 1-9.192-9.192 6.5 6.5 0 0 1 9.192 9.192zm-.707-.707a5.5 5.5 0 1 0-7.778-7.778 5.5 5.5 0 0 0 7.778 7.778z"/>
