@@ -7,7 +7,7 @@
       <ElectionItems parties='{{partyBunch}}' />
     {{/each}}
   </div>
-  <Footer notes='{{notes}}' sources='{{sources}}' maxResult='{{maxResult}}' updatedDate='{{updatedDate}}' />
+  <Footer notes='{{notes}}' sources='{{sources}}' hasResult='{{hasResult}}' updatedDate='{{updatedDate}}' />
 </div>
 
 
@@ -18,32 +18,19 @@
 
   export default {
     computed: {
-      sortedParties: (parties) => {
-        if (parties !== undefined) {
-          return parties.sort((partyA, partyB) => {
-            if (partyA.seats === undefined) {
-              partyA.seats = 0;
-            }
-            if (partyB.seats === undefined) {
-              partyB.seats = 0;
-            }
-            return partyB.seats - partyA.seats;
-          })
-        } else {
-          return [];
-        }
-      },
-      partyBunches: (sortedParties, totalSeats) => {
-        // add party object for vacant seats if total available seats 
-        // is bigger than sum of all parties' seats
-        let sumSeats = sortedParties
-          .map(party => party.seats)
+      sumSeats: (parties) => {
+        return parties
+          .map(party => party.seats || 0)
           .reduce((sum, partySeats) => {
             return sum + partySeats;
           }, 0);
+      },
+      partyBunches: (parties, totalSeats, sumSeats) => {
+        // add party object for vacant seats if total available seats 
+        // is bigger than sum of all parties' seats
         let vacantSeats = totalSeats - sumSeats;
         if (vacantSeats > 0) {
-          sortedParties.push({
+          parties.push({
             name: 'vakant',
             color: {
               classAttribute: 's-color-gray-4'
@@ -52,7 +39,7 @@
           })
         }
         
-        sortedParties.forEach(party => {
+        parties.forEach(party => {
           // define color of each party's arc either via class attribute or color code
           let colorStyle = '';
           let colorClass = '';
@@ -96,14 +83,14 @@
 
         // split party array into two halfs and create another array out of it
         // in order to make a two columned legend if width is sufficient
-        let half = Math.ceil(sortedParties.length / 2);
-        let partiesFirstHalf = sortedParties.slice(0, half);
-        let partiesSecondHalf = sortedParties.slice(half);
-        sortedParties = [partiesFirstHalf, partiesSecondHalf];
-        return sortedParties;
+        let half = Math.ceil(parties.length / 2);
+        let partiesFirstHalf = parties.slice(0, half);
+        let partiesSecondHalf = parties.slice(half);
+        parties = [partiesFirstHalf, partiesSecondHalf];
+        return parties;
       },
-      maxResult: (sortedParties) => {
-        return sortedParties[0].seats;
+      hasResult: (sumSeats) => {
+        return sumSeats > 0;
       }
     },
     components: {
