@@ -1,0 +1,27 @@
+<div class="q-election-seat-party-list">
+  {{#each parties as party}}
+    <div class="q-election-seat-party-item">
+      <div class="q-election-seat-party-item-info">
+        <div class="q-election-seat-party-item-info-color {{party.colorClass}}" style='{{party.colorStyle}}'></div>
+        <div class="q-election-seat-party-item-info-name s-font-title-xs">{{party.name}}</div>
+      </div>
+      {{#if party.hasSeats}}
+        <div class="q-election-seat-party-item-seats s-font-note-s">
+          <div class="q-election-seat-party-item-seats-number">{{party.seats}}</div>
+          <div class="q-election-seat-party-item-seats-text">Sitz{{#if party.seats > 1 || party.seats === 0}}e{{/if}}</div>
+        </div>
+        {{#if !party.isVacant && party.hasPrevious}}
+          <div class="q-election-seat-party-item-trend">
+            <div class="q-election-seat-party-item-trend-number s-font-note-s">{{#if party.trend > 0}}+{{/if}}{{#if party.trend !== 0}}{{party.trend}}{{/if}}</div> 
+            <svg class="q-election-seat-party-item-trend-image s-color-gray-8" style="transform: rotate({{party.trendDegree}}deg);" width=14 height=14 viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+              <g fill="currentColor" fill-rule="evenodd">
+                <path d="M11.096 11.096a6.5 6.5 0 1 1-9.192-9.192 6.5 6.5 0 0 1 9.192 9.192zm-.707-.707a5.5 5.5 0 1 0-7.778-7.778 5.5 5.5 0 0 0 7.778 7.778z"/>
+                <path d="M7 7H3V6h4V4l4 2.5L7 9V7z"/>
+              </g>
+            </svg>
+          </div>
+        {{/if}}
+      {{/if}}
+    </div>
+  {{/each}}
+</div>
