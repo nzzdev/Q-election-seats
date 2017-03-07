@@ -6,15 +6,13 @@
     {{#each electedPartyBunches as electedPartyBunch}}
       <ElectionItems parties='{{electedPartyBunch}}' />
     {{/each}}
-  </div>
-  {{#if notElectedPartyBunches}}
-    <div class="q-election-seat-separator s-color-gray-4"></div>
-    <div class="q-election-seat-legend">
+    {{#if notElectedPartyBunches.length > 0}}
+      <div class="q-election-seat-separator s-color-gray-4"></div>
       {{#each notElectedPartyBunches as notElectedPartyBunch}}
         <ElectionItems parties='{{notElectedPartyBunch}}' />
       {{/each}}
-    </div>
-  {{/if}}
+    {{/if}}
+  </div>
   <Footer notes='{{notes}}' sources='{{sources}}' hasResult='{{hasResult}}' updatedDate='{{updatedDate}}' />
 </div>
 
