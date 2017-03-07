@@ -46,6 +46,7 @@ $textContainerMarginTop: 22px;
   }
 
   &-separator {
+    margin-bottom: 8px;
     height: 1px;
     width: 100%;
     background-color: currentColor;
@@ -54,7 +55,7 @@ $textContainerMarginTop: 22px;
   &-party {
     &-list {
       flex-grow: 1;
-      min-width: 250px;
+      width: 250px;
     }
 
     &-item {
@@ -71,10 +72,12 @@ $textContainerMarginTop: 22px;
           width: 16px;
           height: 16px;
           float: left;
+          margin-right: 8px;
         }
         &-name {
-          float: left;
-          margin-left: 8px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }  
       }
 

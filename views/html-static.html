@@ -7,7 +7,7 @@
       <ElectionItems parties='{{electedPartyBunch}}' />
     {{/each}}
   </div>
-  {{#if notElectedPartyBunches}}
+  {{#if notElectedPartyBunches.length > 0}}
     <div class="q-election-seat-separator s-color-gray-4"></div>
     <div class="q-election-seat-legend">
       {{#each notElectedPartyBunches as notElectedPartyBunch}}
