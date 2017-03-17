@@ -1,23 +1,18 @@
-# NZZ Storytelling Q Renderer Service Skeleton
+# Q Election Seats
 
-Clone this repo to start with a new Q renderer service skeleton.
+Q election seats is one tool of the Q toolbox to display the allocation of seats according to parliamentary elections.
 
-## Docker setup
-Dockerfile already included in skeleton repo. Renderer service can be dockerized locally with:
-* `docker build -t q-renderer-name .`
-* `docker run -p 3000:3000 q-renderer-name`
-For more information see [Docker documentaion](https://docs.docker.com/)
+## Example
+Here is what the tool looks like on mobile and other devices. The example shows the intermediate seat allocation of the elections in the Netherlands in 2017. It's in German because we do not have multilanguage support (yet).
 
-## Travis Setup
-Travis needs the following environment variables (can be set in Travis' GUI) to push docker image and update rancher accordingly:
-* `DOCKER_USERNAME`
-* `DOCKER_EMAIL`
-* `DOCKER_PASSWORD`
-* `RANCHER_URL`
-* `CATTLE_ACCESS_KEY`
-* `CATTLE_SECRET_KEY`
-* `RANCHER_SERVICE_ID_STAGING`
+![Seat allocation as shown on other devices](https://github.com/nzzdev/Q-election-seats/blob/feat-readme/readme-images/seats_desk.png)
+![Seat allocation as shown on mobile](https://github.com/nzzdev/Q-election-seats/blob/feat-readme/readme-images/seats_mob.png)
 
-To add slack notifications for your builds execute the following command with the suitable token:
-* `travis encrypt "nzzstorytelling:token" --add notifications.slack`
- 
+Each graphic has the following three sections:
+- Header: contains specified title and subtitle
+- Main Part: displays the seat allocation including the total amount of seats. The legend indicates the correlation of color and party as well as the gained number of seats and the trend information compared to the last elections
+- Footer: contains further notes (e.g. how many municipalities already finished counting), source(s) and update information
+
+## Implementation details
+The tool structure follows the general structure of each Q tool. Further information can be found in [Q server documentation - Developing tools](https://nzzdev.github.io/Q-server/developing-tools.html).
+
