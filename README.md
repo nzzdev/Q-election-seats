@@ -5,8 +5,8 @@ Q election seats is one tool of the Q toolbox to display the allocation of seats
 ## Example
 Here is what the tool looks like on mobile and other devices. The example shows the intermediate seat allocation of the elections in the Netherlands in 2017. It's in German because we do not have multilanguage support (yet).
 
-![Seat allocation as shown on other devices](https://github.com/nzzdev/Q-election-seats/blob/feat-readme/readme-images/seats_desk.png)
-![Seat allocation as shown on mobile](https://github.com/nzzdev/Q-election-seats/blob/feat-readme/readme-images/seats_mob.png)
+![Seat allocation as shown on other devices](https://github.com/nzzdev/Q-election-seats/blob/master/readme-images/seats_desk.png)
+![Seat allocation as shown on mobile](https://github.com/nzzdev/Q-election-seats/blob/master/readme-images/seats_mob.png)
 
 Each graphic has the following three sections:
 - Header: contains specified title and subtitle
