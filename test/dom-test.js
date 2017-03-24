@@ -1,7 +1,7 @@
 const JsDom = require('jsdom');
 const expect = require('chai').expect;
 
-const mockData = require('./resources/mock-data');
+const mockData = require('./resources/mock-data-v2.0.0');
 require('svelte/ssr/register');
 const staticTpl = require('../views/html-static.html');
 var markup = staticTpl.render(JSON.parse(JSON.stringify(mockData)));

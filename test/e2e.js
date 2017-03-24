@@ -5,6 +5,16 @@ const expect = require('chai').expect;
 const server = require('../server.js');
 const plugins = require('../server-plugins.js');
 const routes = require('../routes/routes.js');
+const Joi = require('joi');
+const Enjoi = require('enjoi');
+const fs = require('fs');
+
+const resourcesDir = __dirname + '/../resources/';
+
+const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', {
+	encoding: 'utf-8'
+}));
+const schema = Enjoi(schemaString); 
 
 server.register(plugins, err => {
   Hoek.assert(!err, err);
@@ -42,7 +52,8 @@ describe('Q required API', () => {
 
 });
 
-const mockData = JSON.parse(JSON.stringify(require('./resources/mock-data.js')));
+const mockDataV1 = JSON.parse(JSON.stringify(require('./resources/mock-data-v1.0.0')));
+const mockDataV2 = JSON.parse(JSON.stringify(require('./resources/mock-data-v2.0.0')));
 
 describe('rendering-info endpoints', () => {
 
@@ -50,7 +61,7 @@ describe('rendering-info endpoints', () => {
     const request = {
       method: 'POST',
       url: '/rendering-info/html-static',
-      payload: JSON.stringify({ item: mockData })
+      payload: JSON.stringify({ item: mockDataV2 })
     };
     server.inject(request, (res) => {
       expect(res.statusCode).to.be.equal(200);
@@ -59,3 +70,31 @@ describe('rendering-info endpoints', () => {
   })
 
 });
+
+describe('migration endpoint', () => {
+  
+  it('should pass validation against schema after migration via endpoint /migration', function(done) {
+    const request = {
+      method: 'POST',
+      url: '/migration',
+      payload: JSON.stringify({ item: mockDataV1 })
+    } ;
+    server.inject(request, (res) => {
+      expect(Joi.validate(res.result.item, schema).error).to.be.null;
+      done();
+    })
+  })
+
+  it('should return 304 for /migration', function(done) {
+    const request = {
+      method: 'POST',
+      url: '/migration',
+      payload: JSON.stringify({ item: mockDataV2 })
+    } ;
+    server.inject(request, (res) => {
+      expect(res.statusCode).to.be.equal(304);
+      done();
+    })
+  })
+
+})
