@@ -35,7 +35,7 @@
             "type": "object",
             "properties": {
               "colorCode": {
-                "title": "Farbcode",
+                "title": "Farbcode (Hex-Wert oder vordefinierter CSS Farbname, z.B. green)",
                 "type": "string"
               },
               "classAttribute": {
@@ -52,7 +52,10 @@
             "title": "Anzahl Sitze letzte Wahl",
             "type": "number"
           }
-        }
+        },
+        "required": [
+          "name"
+        ]
       }
     },
     "notes": {

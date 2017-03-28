@@ -66,8 +66,9 @@ function getMarkupWithSeatSvg(parties, markup, width) {
             .attr('d', arc)
             .attr('stroke', '#f5f5f5')
             .attr('fill', (parties) => {
-              if (parties.data.color && parties.data.color.classAttribute === undefined) {
-                return parties.data.color.colorCode;
+              let color = parties.data.color;
+              if (color && !color.classAttribute) {
+                return color.colorCode;
               } else {
                 return 'currentColor';
               }

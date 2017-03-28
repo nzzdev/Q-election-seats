@@ -13,9 +13,8 @@ module.exports = {
   notes: "Jemand musste Josef K. verleumdet haben, denn ohne dass er etwas Böses getan hätte, wurde er eines Morgens verhaftet.",
   totalSeats: 200,
   parties: [
-    {
+    {      
       name: "Die Union",
-      abbreviation: "CDU/CSU",
       color: 
         {
           colorCode: "#0084c7"
@@ -25,7 +24,6 @@ module.exports = {
     },
     {
       name: "Sozialdemokratische Partei Deutschlands",
-      abbreviation: "SPD",
       color: 
         {
           colorCode: "#c31906",
@@ -36,7 +34,6 @@ module.exports = {
     },
     {
       name: "Bündnis 90/Die Grünen",
-      abbreviation: "Die Grünen",
       color: 
         {
           colorCode: "#66a622"
@@ -46,7 +43,6 @@ module.exports = {
     },
     {
       name: "Die Linke",
-      abbreviation: "Die Linke",
       color: 
       {
         colorCode: "#a35fd1"
