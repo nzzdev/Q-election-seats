@@ -1,0 +1,20 @@
+{
+  "Parlamentswahlen Sitzverteilung": "election seat distribution",
+  "Titel": "title",
+  "Untertitle": "subtitle",
+  "Total verfügbare Sitze": "total number available seats",
+  "Parteien": "parties",
+  "Partei": "party",
+  "Parteiname (Kürzel)": "party name (abbr.)",
+  "Farbe": "color",
+  "Farbcode (Hex-Wert oder vordefinierter CSS Farbname, z.B. green)": "color code (hex value or one of the predefined CSS color names, e.g. green)",
+  "CSS Klassenname": "CSS class name",
+  "Anzahl Sitze": "number seats",
+  "Anzahl Sitze letzte Wahl": "number seats previous election",
+  "Bemerkungen": "notes",
+  "Quellen": "sources",
+  "Quelle": "source",
+  "Text": "text",
+  "Link": "link",
+  "Url": "URL"
+}
