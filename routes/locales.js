@@ -4,6 +4,7 @@ module.exports = {
   method: 'GET',
   path:'/locales/{lng}/translation.json',
   handler: function(request, reply) {
-    reply.file(localesDir + request.params.lng + '/translation.json');
+    reply.file(localesDir + request.params.lng + '/translation.json')
+      .type('application/json');
   }
 }
