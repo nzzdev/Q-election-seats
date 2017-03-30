@@ -12,7 +12,7 @@
       "type": "string"
     },
     "totalSeats": {
-      "title": "Total verfügbarer Sitze",
+      "title": "Total verfügbare Sitze",
       "type": "number"
     },
     "parties": {
@@ -25,6 +25,7 @@
       },
       "items": {
         "type": "object",
+        "title": "Partei",
         "properties": {
           "name": {
             "title": "Parteiname (Kürzel)",
@@ -33,13 +34,16 @@
           "color": {
             "title": "Farbe",
             "type": "object",
+            "Q:options": {
+              "compact": true
+            },
             "properties": {
               "colorCode": {
                 "title": "Farbcode (Hex-Wert oder vordefinierter CSS Farbname, z.B. green)",
                 "type": "string"
               },
               "classAttribute": {
-                "title": "CSS Klassename",
+                "title": "CSS Klassenname",
                 "type": "string"
               }
             }
@@ -67,6 +71,7 @@
       "type": "array",
       "items": {
         "type": "object",
+        "title": "Quelle",
         "properties": {
           "text": {
             "title": "Text",
