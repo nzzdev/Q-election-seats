@@ -61,7 +61,14 @@ describe('rendering-info endpoints', () => {
     const request = {
       method: 'POST',
       url: '/rendering-info/html-static',
-      payload: JSON.stringify({ item: mockDataV2 })
+      payload: JSON.stringify({ 
+        item: mockDataV2,
+        toolRuntimeConfig: {
+          displayOptions: {
+
+          }
+        }
+      })
     };
     server.inject(request, (res) => {
       expect(res.statusCode).to.be.equal(200);
