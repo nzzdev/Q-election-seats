@@ -1,14 +1,14 @@
-<div class="q-election-seat" style="opacity: 0;">
+<div class="q-election-seats" style="opacity: 0;">
   <Header title='{{item.title}}' hideTitle='{{hideTitle}}' subtitle='{{item.subtitle}}' />
-  <div id="q-election-seat-svg-container" class="q-election-seat-svg-container"></div>
-  <div class="q-election-seat-total s-font-note">{{totalSeats}} Sitze</div>
-  <div class="q-election-seat-text-container">
-    <div class="q-election-seat-legend">
+  <div id="q-election-seats-svg-container" class="q-election-seats-svg-container"></div>
+  <div class="q-election-seats-total s-font-note">{{totalSeats}} Sitze</div>
+  <div class="q-election-seats-text-container">
+    <div class="q-election-seats-legend">
       {{#each electedPartyBunches as electedPartyBunch}}
         <ElectionItems parties='{{electedPartyBunch}}' />
       {{/each}}
       {{#if notElectedPartyBunches.length > 0}}
-        <div class="q-election-seat-separator s-color-gray-4"></div>
+        <div class="q-election-seats-separator s-color-gray-4"></div>
         {{#each notElectedPartyBunches as notElectedPartyBunch}}
           <ElectionItems parties='{{notElectedPartyBunch}}' />
         {{/each}}
