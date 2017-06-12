@@ -100,8 +100,6 @@ module.exports = {
     cors: true
 	},
 	handler: function(request, reply) {
-    // rendering data will be used by template to create the markup
-    // it contains the item itself and additional options impacting the markup
     let item = request.payload.item;
     const defaultGrayLevels = [3, 5, 6, 7, 8, 9];
 
@@ -115,6 +113,8 @@ module.exports = {
       return party;
     })
 
+    // rendering data will be used by template to create the markup
+    // it contains the item itself and additional options impacting the markup
     let renderingData = {
       item: item
     }
