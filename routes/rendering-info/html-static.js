@@ -102,8 +102,21 @@ module.exports = {
 	handler: function(request, reply) {
     // rendering data will be used by template to create the markup
     // it contains the item itself and additional options impacting the markup
+    let item = request.payload.item;
+    const defaultGrayLevels = [3, 5, 6, 7, 8, 9];
+
+    // if party has no color we assign a gray level as default
+    item.parties.map((party, index) => {
+      if (!party.color || (!party.color.classAttribute && !party.color.colorCode)) {
+        party.color = {
+          classAttribute: `s-color-gray-${defaultGrayLevels[index % defaultGrayLevels.length]}`
+        }
+      }
+      return party;
+    })
+
     let renderingData = {
-      item: request.payload.item
+      item: item
     }
 
     if (request.query.updatedDate) {
@@ -144,7 +157,7 @@ module.exports = {
     }
 
     let width = 540;
-    return getMarkupWithSeatSvg(request.payload.item.parties, svelteMarkup, width)
+    return getMarkupWithSeatSvg(item.parties, svelteMarkup, width)
       .then(result => {
         data.markup = result;
         return reply(data);
