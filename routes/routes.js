@@ -7,7 +7,6 @@ const migration = require('./migration.js');
 module.exports = [
 	htmlStatic,
 	stylesheet,
-	schema,
   locales,
   migration
-]
+].concat(schema)

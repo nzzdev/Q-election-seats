@@ -35,7 +35,13 @@
             "title": "Farbe",
             "type": "object",
             "Q:options": {
-              "compact": true
+              "compact": true,
+              "availabilityChecks": [
+                {
+                  "type": "UserHasRole",
+                  "role": "expert-election-votes"
+                }
+              ]
             },
             "properties": {
               "colorCode": {
@@ -91,7 +97,8 @@
               }    
             }
           }
-        }
+        },
+        "required": ["text"]
       }
     }
   },
