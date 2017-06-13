@@ -1,6 +1,6 @@
 {
   "name": "@nzz/q-election-seats",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Q Election Seats",
   "keywords": [
     "storytelling",
@@ -45,6 +45,6 @@
     "mocha": "^3.2.0",
     "node-sass": "^4.3.0",
     "postcss": "^5.2.13",
-    "svelte": "1.6.3"
+    "svelte": "1.22.3"
   }
 }

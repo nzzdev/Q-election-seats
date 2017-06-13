@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 
 const mockData = require('./resources/mock-data-v2.0.0');
 require('svelte/ssr/register');
-const staticTpl = require('../views/html-static.html');
+const staticTpl = require('../views/HtmlStatic.html');
 const renderingData = {
   item: mockData,
   toolRuntimeConfig: {
