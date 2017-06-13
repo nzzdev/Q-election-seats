@@ -15,7 +15,7 @@ const displayOptionsSchema = Enjoi(JSON.parse(fs.readFileSync(resourcesDir + 'di
 })));
 
 require('svelte/ssr/register');
-const staticTemplate = require(viewsDir + 'html-static.html');
+const staticTemplate = require(viewsDir + 'HtmlStatic.html');
 
 var jsdom = require('jsdom');
 var d3 = require('d3');
