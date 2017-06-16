@@ -45,8 +45,9 @@
             },
             "properties": {
               "colorCode": {
-                "title": "Farbcode (Hex-Wert oder vordefinierter CSS Farbname, z.B. green)",
-                "type": "string"
+                "title": "Farbcode",
+                "type": "string",
+                "Q:type": "color"
               },
               "classAttribute": {
                 "title": "CSS Klassenname",
