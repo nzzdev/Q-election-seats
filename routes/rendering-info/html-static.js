@@ -10,8 +10,12 @@ const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', {
 }));
 const schema = Enjoi(schemaString);
 
+const displayOptionsSchema = Enjoi(JSON.parse(fs.readFileSync(resourcesDir + 'display-options-schema.json', {
+  encoding: 'utf-8'
+})));
+
 require('svelte/ssr/register');
-const staticTemplate = require(viewsDir + 'html-static.html');
+const staticTemplate = require(viewsDir + 'HtmlStatic.html');
 
 var jsdom = require('jsdom');
 var d3 = require('d3');
@@ -30,13 +34,13 @@ function getMarkupWithSeatSvg(parties, markup, width) {
         }
         let height = width / 2;
         let radius = width / 2;
-        let svgContainerElement = window.document.getElementById('q-election-seat-svg-container');
+        let svgContainerElement = window.document.getElementById('q-election-seats-svg-container');
 
         if (svgContainerElement) {
           let svg = d3.select(svgContainerElement)
             .append('svg')
             .attr('viewbox', '0 0 ' + width + ' ' + height)
-            .attr('class', 'q-election-seat-svg-content')
+            .attr('class', 'q-election-seats-svg-content')
             .append('g')
             .attr('transform', 'translate('+ (width / 2) + ',' + height +')');
           
@@ -96,22 +100,36 @@ module.exports = {
     cors: true
 	},
 	handler: function(request, reply) {
-    if (request.query.updatedDate) {
-      request.payload.item.updatedDate = request.query.updatedDate;
-    }
+    let item = request.payload.item;
 
-    let isSophieVizColorDefined = false;
-    let parties = request.payload.item.parties;
-    if (parties !== undefined) {
-      parties.forEach(party => {
-        let vizPattern = /^s-viz-color-party.*/;
-        if (_.has(party, 'color.classAttribute') && vizPattern.test(party.color.classAttribute)) {
-          isSophieVizColorDefined = true;
+    // gray levels are limited to these specific ones because others are either used or too light
+    const defaultGrayLevels = [3, 5, 6, 7, 8, 9];
+
+    // if party has no color we assign a gray level as default
+    item.parties.map((party, index) => {
+      if (!party.color || (!party.color.classAttribute && !party.color.colorCode)) {
+        party.color = {
+          classAttribute: `s-color-gray-${defaultGrayLevels[index % defaultGrayLevels.length]}`
         }
-      })
+      }
+      return party;
+    })
+
+    // rendering data will be used by template to create the markup
+    // it contains the item itself and additional options impacting the markup
+    let renderingData = {
+      item: item
     }
 
-    let svelteMarkup = staticTemplate.render(request.payload.item);
+    if (request.query.updatedDate) {
+      renderingData.item.updatedDate = request.query.updatedDate;
+    }
+
+    if (request.payload.toolRuntimeConfig) {
+      renderingData.toolRuntimeConfig = request.payload.toolRuntimeConfig;
+    }
+
+    let svelteMarkup = staticTemplate.render(renderingData);
 
     let data = {
       stylesheets: [
@@ -122,6 +140,18 @@ module.exports = {
       markup: svelteMarkup
     }
 
+    let isSophieVizColorDefined = false;
+    let parties = renderingData.item.parties;
+    if (parties !== undefined) {
+      parties.forEach(party => {
+        let vizPattern = /^s-viz-color-party.*/;
+        if (_.has(party, 'color.classAttribute') && vizPattern.test(party.color.classAttribute)) {
+          isSophieVizColorDefined = true;
+        }
+      })
+    }
+
+
     if (isSophieVizColorDefined) {
       data.stylesheets.push({
         url: 'https://service.sophie.nzz.ch/bundle/sophie-viz-color@^1.0.0[parties].css'
@@ -129,7 +159,7 @@ module.exports = {
     }
 
     let width = 540;
-    return getMarkupWithSeatSvg(request.payload.item.parties, svelteMarkup, width)
+    return getMarkupWithSeatSvg(item.parties, svelteMarkup, width)
       .then(result => {
         data.markup = result;
         return reply(data);

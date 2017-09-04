@@ -35,12 +35,19 @@
             "title": "Farbe",
             "type": "object",
             "Q:options": {
-              "compact": true
+              "compact": true,
+              "availabilityChecks": [
+                {
+                  "type": "UserHasRole",
+                  "role": "expert-election-votes"
+                }
+              ]
             },
             "properties": {
               "colorCode": {
-                "title": "Farbcode (Hex-Wert oder vordefinierter CSS Farbname, z.B. green)",
-                "type": "string"
+                "title": "Farbcode",
+                "type": "string",
+                "Q:type": "color"
               },
               "classAttribute": {
                 "title": "CSS Klassenname",
@@ -91,7 +98,8 @@
               }    
             }
           }
-        }
+        },
+        "required": ["text"]
       }
     }
   },
