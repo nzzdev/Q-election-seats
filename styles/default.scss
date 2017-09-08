@@ -1,3 +1,4 @@
+$rowLineHeight: 23px;
 $totalSeatsWidth: 40px;
 $totalSeatsHeight: 36px;
 $legendMarginTop: 9px;
@@ -62,7 +63,7 @@ $textContainerMarginTop: 22px;
 
     &-item {
       clear: left;
-      height: 18px;
+      height: $rowLineHeight;
       margin-bottom: 8px;
 
       &-info {
@@ -71,8 +72,8 @@ $textContainerMarginTop: 22px;
 
         &-color {
           background-color: currentColor;
-          width: 16px;
-          height: 16px;
+          width: $rowLineHeight;
+          height: $rowLineHeight;
           float: left;
           margin-right: 8px;
         }
@@ -86,6 +87,7 @@ $textContainerMarginTop: 22px;
       &-seats {
         float: left;
         width: 25%;
+        line-height: $rowLineHeight;
 
         &-text,
         &-number {
@@ -102,6 +104,7 @@ $textContainerMarginTop: 22px;
       &-trend {
         float: left;
         width: 20%;
+        line-height: $rowLineHeight;
 
         &-text,
         &-number {
@@ -109,7 +112,7 @@ $textContainerMarginTop: 22px;
         }
 
         &-number {
-          min-height: 16px;
+          min-height: $rowLineHeight;
           margin-right: 3px;
           width: 30px;
           text-align: right;
