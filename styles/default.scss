@@ -60,68 +60,68 @@ $textContainerMarginTop: 22px;
       flex-grow: 1;
       width: 250px;
     }
-
-    &-item {
-      clear: left;
-      height: $rowLineHeight;
-      margin-bottom: 8px;
-
-      &-info {
-        float: left;
-        width: 45%;
-
-        &-color {
-          background-color: currentColor;
-          width: $rowLineHeight;
-          height: $rowLineHeight;
-          float: left;
-          margin-right: 8px;
-        }
-        &-name {
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-        }  
-      }
-
-      &-seats {
-        float: left;
-        width: 25%;
-        line-height: $rowLineHeight;
-
-        &-text,
-        &-number {
-          float:left;
-        }
-
-        &-number {
-          margin-right: 3px;
-          width: 30px;
-          text-align: right;
-        }
-      }
-
-      &-trend {
-        float: left;
-        width: 20%;
-        line-height: $rowLineHeight;
-
-        &-text,
-        &-number {
-          float:left;
-        }
-
-        &-number {
-          min-height: $rowLineHeight;
-          margin-right: 3px;
-          width: 30px;
-          text-align: right;
-        }
-      }
-    } 
   }
 
   &-footer {
     margin-top: 8px;
   }
 }
+
+.q-election-seats-party-item {
+  clear: left;
+  height: $rowLineHeight;
+  margin-bottom: 8px;
+
+  & .q-election-seats-party-item-info {
+    float: left;
+    width: 45%;
+
+    &-color {
+      background-color: currentColor;
+      width: $rowLineHeight;
+      height: $rowLineHeight;
+      float: left;
+      margin-right: 8px;
+    }
+    &-name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }  
+  }
+
+  & .q-election-seats-party-item-seats {
+    float: left;
+    width: 25%;
+    line-height: $rowLineHeight;
+
+    &-text,
+    &-number {
+      float:left;
+    }
+
+    &-number {
+      margin-right: 3px;
+      width: 30px;
+      text-align: right;
+    }
+  }
+
+  & .q-election-seats-party-item-trend {
+    float: left;
+    width: 20%;
+    line-height: $rowLineHeight;
+
+    &-text,
+    &-number {
+      float:left;
+    }
+
+    &-number {
+      min-height: $rowLineHeight;
+      margin-right: 3px;
+      width: 30px;
+      text-align: right;
+    }
+  }
+} 
