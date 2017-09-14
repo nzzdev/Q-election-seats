@@ -1,4 +1,5 @@
 $rowLineHeight: 23px;
+$rowMaxTextSize: 17px;
 $totalSeatsWidth: 40px;
 $totalSeatsHeight: 36px;
 $legendMarginTop: 9px;
@@ -75,11 +76,14 @@ $textContainerMarginTop: 22px;
   & .q-election-seats-party-item-info {
     float: left;
     width: 45%;
+    display: flex;
+    align-items: center;
 
     &-color {
       background-color: currentColor;
-      width: $rowLineHeight;
-      height: $rowLineHeight;
+      min-width: $rowMaxTextSize;
+      max-width: $rowMaxTextSize;
+      height: $rowMaxTextSize;
       float: left;
       margin-right: 8px;
     }
