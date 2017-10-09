@@ -97,7 +97,8 @@ module.exports = {
 			payload: {
 				item: schema,
         tooRuntimeConfig: Joi.object()
-			}
+      },
+      cache: false // do not send cache control header to let it be added by Q Server
 		},
     cors: true
 	},
