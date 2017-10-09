@@ -5,6 +5,8 @@ const _ = require('lodash');
 const resourcesDir = __dirname + '/../../resources/';
 const viewsDir = __dirname + '/../../views/';
 
+const styleHashMap = require(__dirname + `/../../styles/hashMap.json`);
+
 const schemaString = JSON.parse(fs.readFileSync(resourcesDir + 'schema.json', {
 	encoding: 'utf-8'
 }));
@@ -134,7 +136,7 @@ module.exports = {
     let data = {
       stylesheets: [
         {
-          name: 'default'
+          name: styleHashMap.default
         }
       ],
       markup: svelteMarkup
@@ -154,7 +156,7 @@ module.exports = {
 
     if (isSophieVizColorDefined) {
       data.stylesheets.push({
-        url: 'https://service.sophie.nzz.ch/bundle/sophie-viz-color@^1.0.0[parties].css'
+        url: 'https://service.sophie.nzz.ch/bundle/sophie-viz-color@^1[parties].css'
       });
     }
 

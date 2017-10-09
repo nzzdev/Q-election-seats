@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/nzzdev/Q-election-seats/issues"
   },
-  "license": "",
+  "license": "MIT",
   "contributors": [
     {
       "name": "Beni Buess",
@@ -23,6 +23,7 @@
   ],
   "main": "index.js",
   "scripts": {
+    "build": "rm -rf styles && mkdir styles && node tasks/build.js",
     "test": "./node_modules/mocha/bin/mocha"
   },
   "repository": {
@@ -32,6 +33,7 @@
   "dependencies": {
     "autoprefixer": "^6.7.2",
     "chai": "^3.5.0",
+    "cssnano": "^3.10.0",
     "d3": "^4.5.0",
     "enjoi": "^2.1.0",
     "forever": "^0.15.3",
@@ -44,7 +46,8 @@
     "lodash": "^4.17.4",
     "mocha": "^3.2.0",
     "node-sass": "^4.3.0",
-    "postcss": "^5.2.13",
+    "postcss": "^5.2.18",
+    "postcss-import": "^11.0.0",
     "svelte": "1.22.3"
   }
 }
