@@ -1,9 +1,13 @@
+$defaultMargin: 8px;
 $rowLineHeight: 23px;
 $rowMaxTextSize: 17px;
 $totalSeatsWidth: 40px;
 $totalSeatsHeight: 36px;
 $legendMarginTop: 9px;
 $textContainerMarginTop: 22px;
+$partyListNumberWidth: 30px;
+$partyListNumberMargin: 3px;
+$partyListTrendArrow: 14px;
 
 .q-election-seats {
   opacity: 1 !important;
@@ -50,7 +54,7 @@ $textContainerMarginTop: 22px;
   }
 
   &-separator {
-    margin-bottom: 8px;
+    margin-bottom: $defaultMargin;
     height: 1px;
     width: 100%;
     background-color: currentColor;
@@ -59,35 +63,39 @@ $textContainerMarginTop: 22px;
   &-party {
     &-list {
       flex-grow: 1;
-      width: 250px;
+      width: 265px;
     }
   }
 
   &-footer {
-    margin-top: 8px;
+    margin-top: $defaultMargin;
   }
+}
+
+.q-election-seats-party-list {
+  margin-right: $defaultMargin;
 }
 
 .q-election-seats-party-item {
   clear: left;
   height: $rowLineHeight;
-  margin-bottom: 8px;
+  line-height: $rowLineHeight;
+  margin-bottom: $defaultMargin;
+  display: flex;
+  align-items: center;
+  width: 100%;
 
   & .q-election-seats-party-item-info {
-    float: left;
-    width: 45%;
-    display: flex;
-    align-items: center;
-
     &-color {
       background-color: currentColor;
       min-width: $rowMaxTextSize;
       max-width: $rowMaxTextSize;
       height: $rowMaxTextSize;
       float: left;
-      margin-right: 8px;
+      margin-right: $defaultMargin;
     }
     &-name {
+      flex-grow: 1;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -95,37 +103,34 @@ $textContainerMarginTop: 22px;
   }
 
   & .q-election-seats-party-item-seats {
-    float: left;
-    width: 25%;
-    line-height: $rowLineHeight;
-
     &-text,
     &-number {
       float:left;
     }
 
     &-number {
-      margin-right: 3px;
-      width: 30px;
+      margin-right: $partyListNumberMargin;
+      width: $partyListNumberWidth;
       text-align: right;
     }
   }
 
   & .q-election-seats-party-item-trend {
-    float: left;
-    width: 20%;
-    line-height: $rowLineHeight;
-
-    &-text,
-    &-number {
-      float:left;
+   
+    &-icon {
+      height: $rowLineHeight;
     }
 
     &-number {
-      min-height: $rowLineHeight;
-      margin-right: 3px;
-      width: 30px;
+      float:left;
+      height: $rowLineHeight;
+      margin-right: $partyListNumberMargin;     
+      width: $partyListNumberWidth;
       text-align: right;
     }
   }
-} 
+}
+
+.q-election-seats-display-trend .q-election-seats-party-item-trend-space {
+  width: $partyListNumberWidth + $partyListNumberMargin + $partyListTrendArrow;
+}
