@@ -51,6 +51,7 @@ $partyListTrendArrow: 14px;
     margin-top: $legendMarginTop;
     display: flex;
     flex-wrap: wrap;
+    margin-right: -$defaultMargin;
   }
 
   &-separator {
@@ -105,7 +106,7 @@ $partyListTrendArrow: 14px;
   & .q-election-seats-party-item-seats {
     &-text,
     &-number {
-      float:left;
+      float: left;
     }
 
     &-number {
