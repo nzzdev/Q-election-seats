@@ -5,12 +5,12 @@
   <div class="q-election-seats-text-container">
     <div class="q-election-seats-legend">
       {{#each electedPartyBunches as electedPartyBunch}}
-        <ElectionItems parties='{{electedPartyBunch}}' />
+        <ElectionItems parties='{{electedPartyBunch}}' displayTrendClass='{{displayTrendClass}}'/>
       {{/each}}
       {{#if notElectedPartyBunches.length > 0}}
         <div class="q-election-seats-separator s-color-gray-4"></div>
         {{#each notElectedPartyBunches as notElectedPartyBunch}}
-          <ElectionItems parties='{{notElectedPartyBunch}}' />
+          <ElectionItems parties='{{notElectedPartyBunch}}' displayTrendClass='{{displayTrendClass}}'/>
         {{/each}}
       {{/if}}
     </div>
@@ -41,6 +41,15 @@
       },
       totalSeats: (item) => {
         return item.totalSeats;
+      },
+      displayTrendClass : (parties, sumSeats) => {
+        let partiesWithPrevious = parties.filter(party => {
+            return party.previous !== undefined
+          });
+        if (sumSeats > 0 && partiesWithPrevious.length > 0) {
+          return 'q-election-seats-display-trend';
+        }
+        return '';
       },
       enhancedParties: (parties, totalSeats, sumSeats) => {
         // add party object for vacant seats if total available seats 
