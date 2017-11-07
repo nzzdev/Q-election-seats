@@ -1,12 +1,7 @@
-const htmlStatic = require('./rendering-info/html-static.js');
-const stylesheet = require('./stylesheet.js');
-const schema = require('./schema.js');
-const locales = require('./locales.js');
-const migration = require('./migration.js');
-
 module.exports = [
-	htmlStatic,
-	stylesheet,
-  locales,
-  migration
-].concat(schema)
+	require('./rendering-info/html-static.js'),
+	require('./stylesheet.js'),
+  require('./locales.js'),
+  require('./migration.js'),
+  require('./health.js')
+].concat(require('./schema.js'))
