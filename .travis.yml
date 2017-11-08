@@ -8,6 +8,8 @@ node_js:
 install:
 - npm install
 before_script:
+- npm run build
+- npm run test
 - DOCKER_IMAGE_NAME="q-election-seats"
 - DOCKER_TAG=$TRAVIS_BRANCH
 script:
