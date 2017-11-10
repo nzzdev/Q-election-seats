@@ -14,7 +14,7 @@
         {{/each}}
       {{/if}}
     </div>
-    <Footer notes='{{item.notes}}' sources='{{item.sources}}' hasResult='{{hasResult}}' updatedDate='{{item.updatedDate}}' />
+    <Footer notes='{{item.notes}}' sources='{{item.sources}}' updatedDate='{{item.updatedDate}}' hideUpdatedDate='{{hideUpdatedDate}}'/>
   </div>
 </div>
 
@@ -140,8 +140,8 @@
         elected = [partiesFirstHalf, partiesSecondHalf];
         return elected;
       },
-      hasResult: (sumSeats) => {
-        return sumSeats > 0;
+      hideUpdatedDate: (item) => {
+        return item.options && item.options.hideUpdatedDate
       }
     },
     components: {

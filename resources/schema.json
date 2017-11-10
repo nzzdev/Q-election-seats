@@ -101,6 +101,17 @@
         },
         "required": ["text"]
       }
+    },
+    "options": {
+      "title": "Allgemeine Optionen",
+      "type": "object",
+      "properties": {
+        "hideUpdatedDate": {
+          "title": "Aktualisierungsdatum ausblenden",
+          "type": "boolean",
+          "default": false
+        }
+      }
     }
   },
   "required": [
