@@ -39,7 +39,7 @@
               "availabilityChecks": [
                 {
                   "type": "UserHasRole",
-                  "role": "expert-election-votes"
+                  "role": "expert-election-seats"
                 }
               ]
             },
@@ -109,7 +109,7 @@
         "availabilityChecks": [
           {
             "type": "UserHasRole",
-            "role": "expert-election-votes"
+            "role": "expert-election-seats"
           }
         ]
       },
