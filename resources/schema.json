@@ -39,7 +39,7 @@
               "availabilityChecks": [
                 {
                   "type": "UserHasRole",
-                  "role": "expert-election-votes"
+                  "role": "expert-election-seats"
                 }
               ]
             },
@@ -105,6 +105,14 @@
     "options": {
       "title": "Allgemeine Optionen",
       "type": "object",
+      "Q:options": {
+        "availabilityChecks": [
+          {
+            "type": "UserHasRole",
+            "role": "expert-election-seats"
+          }
+        ]
+      },
       "properties": {
         "hideUpdatedDate": {
           "title": "Aktualisierungsdatum ausblenden",
