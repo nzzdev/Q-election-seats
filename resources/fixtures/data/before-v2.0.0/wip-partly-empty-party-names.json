@@ -1,0 +1,74 @@
+{
+  "title": "FIXTURE: first one from index.html",
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "url": "www.nzz.ch",
+        "isValid": true
+      }
+    }
+  ],
+  "subtitle": "Möglichkeit zusätzliche Informationen als Untertitel zu erfassen",
+  "notes": "Jemand musste Josef K. verleumdet haben, denn ohne dass er 'etwas Böses getan hätte, wurde er eines Morgens verhaftet.",
+  "totalSeats": 200,
+  "parties": [
+    {
+      "color": {
+        "colorCode": "#004e76"
+      },
+      "name": "Verfassungsdemokraten",
+      "seats": 55
+    },
+    {
+      "color": {
+        "colorCode": "#0084c7"
+      },
+      "name": "Kommunistische Partei",
+      "seats": 12
+    },
+    {
+      "color": {
+        "colorCode": "#6cb8de"
+      },
+      "seats": 2
+    },
+    {
+      "color": {
+        "colorCode": "#d3574a"
+      },
+      "name": "",
+      "seats": 284,
+      "previous": 212
+    },
+    {
+      "color": {
+        "colorCode": "#780f03"
+      },
+      "name": "Komeito",
+      "seats": 29,
+      "previous": 12
+    },
+    {
+      "color": {
+        "colorCode": "#85b84f"
+      },
+      "name": "Erneuerung Japans",
+      "seats": 11,
+      "previous": 12
+    },
+    {
+      "color": {
+        "colorCode": "#3b6113"
+      },
+      "name": "Hoffnungspartei",
+      "seats": 50,
+      "previous": 12
+    },
+    {
+      "color": {},
+      "name": "andere",
+      "seats": 22
+    }
+  ]
+}
