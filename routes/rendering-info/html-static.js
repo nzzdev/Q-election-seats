@@ -89,7 +89,7 @@ function getMarkupWithSeatSvg(parties, markup, width) {
 module.exports = {
 	method: 'POST',
 	path: '/rendering-info/html-static',
-	config: {
+	options: {
 		validate: {
       options: {
         allowUnknown: true
@@ -102,7 +102,7 @@ module.exports = {
     cache: false, // do not send cache control header to let it be added by Q Server
     cors: true
 	},
-	handler: function(request, reply) {
+	handler: async function(request, h) {
     let item = request.payload.item;
 
     // gray levels are limited to these specific ones because others are either used or too light
@@ -162,15 +162,14 @@ module.exports = {
     }
 
     let width = 540;
-    return getMarkupWithSeatSvg(item.parties, svelteMarkup, width)
-      .then(result => {
-        data.markup = result;
-        return reply(data);
-      })
-      .catch(errorMessage => {
-        // return markup without svg in case of errors
-        console.log(errorMessage);
-        return reply(data);
-      })
+    try {
+      const markupWithSvg = await getMarkupWithSeatSvg(item.parties, svelteMarkup, width);
+      data.markup = markupWithSvg;
+      return data;
+    } catch(errorMessage) {
+      // return markup without svg in case of errors
+      console.log(errorMessage);
+      return data;
+    }
 	}
 }

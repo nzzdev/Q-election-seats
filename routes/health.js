@@ -4,7 +4,7 @@ module.exports = {
   config: {
     tags: ['api']
   },
-  handler: (request, reply) => {
-    reply('ok');
+  handler: (request, h) => {
+    return 'ok';
   }
 }

@@ -1,15 +1,15 @@
-const Hoek = require('hoek');
 const server = require('./server.js');
 const plugins = require('./server-plugins.js');
 const routes = require('./routes/routes.js')
 
-server.register(plugins, err => {
-  Hoek.assert(!err, err);
+const start = async function() {
+
+  await server.register(plugins);
 
   server.route(routes);
 
-  server.start(err => {
-    Hoek.assert(!err, err);
-    console.log('Server running at: ' + server.info.uri);
-  })
-});
+  await server.start();
+  console.log('Server running at: ' + server.info.uri);
+}
+
+start();
