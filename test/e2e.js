@@ -54,8 +54,8 @@ async function start() {
   
   });
   
-  const fixtureDataV1 = require('../resources/fixtures/data/before-v2.0.0/wip-partly-empty-party-names');
-  const fixtureDataV2 = require('../resources/fixtures/data/wip.json');
+  const fixtureDataV1 = require('../resources/fixtures/data/before-v2.0.0/results-partly-empty-party-names');
+  const fixtureDataV2 = require('../resources/fixtures/data/results-long-names-vacancy-zero-seats.json');
 
   describe('rendering-info endpoint', () => {
 

@@ -1,0 +1,64 @@
+{
+  "title": "FIXTURE: results - color classes - no vacant seats",
+  "sources": [
+    {
+      "text": "NZZ",
+      "link": {
+        "url": "www.nzz.ch",
+        "isValid": true
+      }
+    }
+  ],
+  "subtitle": "Möglichkeit zusätzliche Informationen als Untertitel zu erfassen",
+  "notes": "Jemand musste Josef K. verleumdet haben, denn ohne dass er 'etwas Böses getan hätte, wurde er eines Morgens verhaftet.",
+  "totalSeats": 200,
+  "parties": [
+    {
+      "color": {
+        "colorCode": "#004e76",
+        "classAttribute": "s-viz-color-party-svp-5"
+      },
+      "name": "Verfassungsdemokraten",
+      "seats": 55
+    },
+    {
+      "color": {
+        "classAttribute": "s-viz-color-party-default-5"
+      },
+      "name": "Kommunistische Partei",
+      "seats": 12
+    },
+    {
+      "color": {
+        "colorCode": "#6cb8de",
+        "classAttribute": "s-viz-color-party-sp-5"
+      },
+      "name": "Sozialdemokraten",
+      "seats": 2
+    },
+    {
+      "color": {
+        "classAttribute": "s-viz-color-party-fdp-5"
+      },
+      "name": "Liberaldemokraten",
+      "seats": 111,
+      "previous": 212
+    },
+    {
+      "color": {
+        "colorCode": "#85b84f"
+      },
+      "name": "Erneuerung Japans",
+      "seats": 0,
+      "previous": 0
+    },
+    {
+      "color": {
+        "classAttribute": "s-viz-color-party-glp-5"
+      },
+      "name": "Erfundene Partei mit langem Namen",
+      "seats": 20,
+      "previous": 12
+    }
+  ]
+}

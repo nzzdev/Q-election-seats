@@ -1,5 +1,5 @@
 {
-  "title": "FIXTURE: first one from index.html",
+  "title": "FIXTURE: results - vacant seats - zero seats",
   "sources": [
     {
       "text": "NZZ",
@@ -17,58 +17,44 @@
       "color": {
         "colorCode": "#004e76"
       },
-      "name": "Verfassungsdemokraten",
+      "name": "",
       "seats": 55
     },
     {
       "color": {
         "colorCode": "#0084c7"
       },
-      "name": "Kommunistische Partei",
       "seats": 12
     },
     {
       "color": {
         "colorCode": "#6cb8de"
       },
+      "name": "Sozialdemokraten",
       "seats": 2
     },
     {
       "color": {
         "colorCode": "#d3574a"
       },
-      "name": "",
-      "seats": 284,
+      "name": "Liberaldemokraten",
+      "seats": 111,
       "previous": 212
+    },{
+      "color": {
+        "colorCode": "#85b84f"
+      },
+      "name": "Erneuerung Japans",
+      "seats": 0,
+      "previous": 12
     },
     {
       "color": {
         "colorCode": "#780f03"
       },
-      "name": "Komeito",
-      "seats": 29,
+      "name": "Erfundene Partei mit langem Namen",
+      "seats": 18,
       "previous": 12
-    },
-    {
-      "color": {
-        "colorCode": "#85b84f"
-      },
-      "name": "Erneuerung Japans",
-      "seats": 11,
-      "previous": 12
-    },
-    {
-      "color": {
-        "colorCode": "#3b6113"
-      },
-      "name": "Hoffnungspartei",
-      "seats": 50,
-      "previous": 12
-    },
-    {
-      "color": {},
-      "name": "andere",
-      "seats": 22
     }
   ]
 }

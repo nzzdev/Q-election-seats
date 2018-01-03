@@ -1,5 +1,5 @@
 {
-  "title": "FIXTURE: first one from index.html",
+  "title": "FIXTURE: results - partly previous",
   "sources": [
     {
       "text": "NZZ",
@@ -39,37 +39,24 @@
         "colorCode": "#d3574a"
       },
       "name": "Liberaldemokraten",
-      "seats": 284,
+      "seats": 111,
       "previous": 212
-    },
-    {
-      "color": {
-        "colorCode": "#780f03"
-      },
-      "name": "Komeito",
-      "seats": 29,
-      "previous": 12
     },
     {
       "color": {
         "colorCode": "#85b84f"
       },
       "name": "Erneuerung Japans",
-      "seats": 11,
+      "seats": 0,
       "previous": 12
     },
     {
       "color": {
-        "colorCode": "#3b6113"
+        "colorCode": "#780f03"
       },
-      "name": "Hoffnungspartei",
-      "seats": 50,
+      "name": "Erfundene Partei mit langem Namen",
+      "seats": 18,
       "previous": 12
-    },
-    {
-      "color": {},
-      "name": "andere",
-      "seats": 22
     }
   ]
 }

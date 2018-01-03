@@ -1,7 +1,7 @@
 const JsDom = require('jsdom');
 const expect = require('chai').expect;
 
-const mockData = require('../resources/fixtures/data/wip.json');
+const mockData = require('../resources/fixtures/data/results-color-classes-no-vacancy.json');
 require('svelte/ssr/register');
 const staticTpl = require('../views/HtmlStatic.html');
 const renderingData = {
