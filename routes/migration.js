@@ -10,14 +10,14 @@ const migrationScripts = [
 module.exports = {
   method: 'POST',
   path:'/migration',
-  config: {
+  options: {
     validate: {
       payload: {
         item: Joi.object().required()
       }
     }
   },
-  handler: (request, reply) => {
+  handler: (request, h) => {
     let item = request.payload.item;
     const results = migrationScripts.map(script => {
       const result = script.migrate(item);
@@ -30,10 +30,10 @@ module.exports = {
       return result.isChanged;
     });
     if (isChanged >= 0) {
-      return reply({
+      return {
         item: item
-      })
+      }
     }
-    return reply().code(304);
+    return h.response('item had not to be modified').code(304);
   }
 }

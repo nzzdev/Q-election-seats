@@ -1,6 +1,6 @@
 {
   "name": "@nzz/q-election-seats",
-  "version": "2.6.1",
+  "version": "2.7.0",
   "description": "Q Election Seats",
   "keywords": [
     "storytelling",
@@ -24,28 +24,26 @@
   "main": "index.js",
   "scripts": {
     "build": "rm -rf styles && mkdir styles && node tasks/build.js",
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha --exit"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nzzdev/Q-election-seats.git"
   },
   "dependencies": {
-    "autoprefixer": "^6.7.2",
-    "chai": "^3.5.0",
+    "autoprefixer": "^7.2.2",
+    "chai": "^4.1.2",
     "cssnano": "^3.10.0",
-    "d3": "^4.5.0",
+    "d3": "^4.12.2",
     "enjoi": "^2.1.0",
     "forever": "^0.15.3",
-    "hapi": "^16.1.0",
-    "hoek": "^4.1.0",
-    "inert": "^4.1.0",
-    "joi": "^10.2.2",
+    "hapi": "^17.2.0",
+    "inert": "^5.0.1",
+    "joi": "^13.0.2",
     "jsdom": "^9.11.0",
-    "json-schema-faker": "^0.4.0",
     "lodash": "^4.17.4",
-    "mocha": "^3.2.0",
-    "node-sass": "^4.3.0",
+    "mocha": "^4.0.1",
+    "node-sass": "^4.7.2",
     "postcss": "^5.2.18",
     "postcss-import": "^11.0.0",
     "svelte": "1.22.3"
