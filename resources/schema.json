@@ -5,11 +5,17 @@
   "properties": {
     "title": {
       "title": "Titel",
-      "type": "string"
+      "type": "string",
+      "Q:options": {
+        "placeholder": "Der Titel bringt die Kernaussage der Grafik auf den Punkt, zB. 'Die Demokraten sichern sich die Mehrheit'"
+      }
     },
     "subtitle": {
       "title": "Untertitel",
-      "type": "string"
+      "type": "string",
+      "Q:options": {
+        "placeholder": "Der Untertitel benennt präzise, um welche Wahl es sich handelt."
+     }
     },
     "totalSeats": {
       "title": "Total verfügbare Sitze",
@@ -28,11 +34,11 @@
         "title": "Partei",
         "properties": {
           "name": {
-            "title": "Parteiname (Kürzel)",
+            "title": "Parteiname oder Kürzel",
             "type": "string"
           },
           "color": {
-            "title": "Farbe",
+            "title": "Parteifarbe",
             "type": "object",
             "Q:options": {
               "compact": true,
@@ -51,7 +57,10 @@
               },
               "classAttribute": {
                 "title": "CSS Klassenname",
-                "type": "string"
+                "type": "string",
+                "Q:options": {
+                  "placeholder": "s-viz-color-party-..."
+                }
               }
             }
           },
@@ -60,8 +69,11 @@
             "type": "number"
           },
           "previous": {
-            "title": "Anzahl Sitze letzte Wahl",
-            "type": "number"
+            "title": "Anzahl Sitze vergangene Wahl",
+            "type": "number",
+            "Q:options": {
+              "placeholder": "Die Veränderung von der vergangenen zu aktuellen Wahl wird dann automatisch berechnet."
+            }
           }
         },
         "required": [
@@ -74,14 +86,14 @@
       "type": "string"
     },
     "sources": {
-      "title": "Quellen",
+      "title": "Quelle(n)",
       "type": "array",
       "items": {
         "type": "object",
         "title": "Quelle",
         "properties": {
           "text": {
-            "title": "Text",
+            "title": "Quelle",
             "type": "string"
           },
           "link": {
@@ -90,8 +102,11 @@
             "type": "object",
             "properties": {
               "url": {
-                "title": "Url",
-                "type": "string"
+                "title": "Link",
+                "type": "string",
+                "Q:options": {
+                  "placeholder": "Direktlink zur Quelle, http://..."
+                }
               },
               "isValid": {
                 "type": "boolean"
@@ -103,7 +118,7 @@
       }
     },
     "options": {
-      "title": "Allgemeine Optionen",
+      "title": "Optionen",
       "type": "object",
       "Q:options": {
         "availabilityChecks": [
