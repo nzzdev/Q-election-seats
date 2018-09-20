@@ -1,6 +1,6 @@
 {
   "name": "@nzz/q-election-seats",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "Q Election Seats",
   "keywords": [
     "storytelling",
@@ -31,21 +31,21 @@
     "url": "git+https://github.com/nzzdev/Q-election-seats.git"
   },
   "dependencies": {
-    "autoprefixer": "^7.2.2",
+    "autoprefixer": "^7.2.6",
     "chai": "^4.1.2",
     "cssnano": "^3.10.0",
-    "d3": "^4.12.2",
+    "d3": "^4.13.0",
     "enjoi": "^2.1.0",
     "forever": "^0.15.3",
-    "hapi": "^17.2.0",
-    "inert": "^5.0.1",
-    "joi": "^13.0.2",
-    "jsdom": "^9.11.0",
-    "lodash": "^4.17.4",
-    "mocha": "^4.0.1",
-    "node-sass": "^4.7.2",
+    "hapi": "^17.5.4",
+    "inert": "^5.1.0",
+    "joi": "^13.6.0",
+    "jsdom": "^9.12.0",
+    "lodash": "^4.17.11",
+    "mocha": "^4.1.0",
+    "node-sass": "^4.9.3",
     "postcss": "^5.2.18",
-    "postcss-import": "^11.0.0",
+    "postcss-import": "^11.1.0",
     "svelte": "1.22.3"
   }
 }
