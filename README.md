@@ -1,5 +1,7 @@
 # Q Election Seats
 
+**Maintainer**: [benib](https://github.com/benib)
+
 Q election seats is one tool of the Q toolbox to display the allocation of seats according to parliamentary elections.
 
 ## Example
