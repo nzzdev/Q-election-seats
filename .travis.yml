@@ -14,15 +14,16 @@ script:
 - npm run build
 - npm test
 - docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .
-- echo $DOCKER_PASSWORD | docker login -u="$DOCKER_USERNAME" --password-stdin; docker tag $DOCKER_IMAGE_NAME:$DOCKER_TAG
-  nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG; docker push nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG;
-- if [ "$TRAVIS_BRANCH" == "staging" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then docker run --rm -it -e RANCHER_URL -e CATTLE_ACCESS_KEY 
-  -e CATTLE_SECRET_KEY etlweather/gaucho upgrade $RANCHER_SERVICE_ID_STAGING --auto_complete 
-  --start_first --imageUuid="docker:nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG" || true; 
-  fi
+- echo $DOCKER_PASSWORD | docker login -u="$DOCKER_USERNAME" --password-stdin; docker
+  tag $DOCKER_IMAGE_NAME:$DOCKER_TAG nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG; docker
+  push nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG;
+- if [ "$TRAVIS_BRANCH" == "staging" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
+  docker run --rm -it -e RANCHER_URL -e CATTLE_ACCESS_KEY -e CATTLE_SECRET_KEY etlweather/gaucho
+  upgrade $RANCHER_SERVICE_ID_STAGING --auto_complete --start_first --imageUuid="docker:nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG"
+  || true; fi
 cache:
   directories:
   - node_modules
 notifications:
   slack:
-    secure: 61rov1Nijs9J7TMEdO/hnZNq9FpcDfSGDLphBj206qwT2C0Oxu42fQD3P5iOp7yrr75InKX7gVOHGTOZS5vCvH62GNzR6ZytC2O+X9IMPweuDQPaAOS1R6g5uRZ9WIedTVKKLJ8a0UsCuWl+EhHfBr0Z8YHbR2XiaUWY+KQUsaXDvfOAYhFwnFntIXNcdCkcJt6pby+OpMRZ4MEEp51ge1+odD8qCOmIsBODGgz2P6Ua68Okrdgk02s6OzNKqkHMF6MxBEBQpmjeKfzSbtfaLve4nllEw2xzaZlqcNNxr/KMRRarZlgE1HG1I1ikEW1EmIgIkPwpwcDTnhEyZcJWDomMoAkJl3LJILfp3NS2EOoOILquez+I7h5QY7MCeolJIS+R3JolhRDOhOg2RqyB+FXq/uZcXB1e4oNQZCNl4rMaDz4H8z8OuLAMDVVVCNYSFgstEmR8oRDAz8lPFciA2jRYyNTD7UDa91Hrw7xpe2oCpKXy6D2RhctWAeeDOyxp1lm9ZK9ORvzqRQRqBkoudqeLCmf4DeSS6IMkIRZMMY+XlGOsAoj//ailQp1A1i9ujuym/XCyBJx5VTSpfUkPT0i0RoDuRltTOlD5N84Rq5LFImgV8aOLh5wN1bwRVH/eYUwdFydow79J/0nMmvb2Sa1L0VwXdBukMW0vuau3GMM=
+    secure: JIvOOoUy9Ys0a6NaC7jINi6EDPs8TQ25XM+a8BtBPBkq4kzGDSWvdm5r+0vEZlUz/G8l3AIM7exPIKxwQDfpnkuduyzhQ2N4Fr1h+UCdrssbrm8F4/xq/mM4ipEkNi337YV1BL/7c7qvuMERjWD1RwMGk32tQMNC2haQ2ofYp7rlOvnXC2AtyMZU0nGy27iWFOOvvKIxivHlIcDa/2hndhvQQSGmoGRs5rv29LM5Zley3gXUxn7Fcn6DC9egIJDPPtrvhPSvifYhRmDw8YXWPPrtTO+R8t15nDqvrTrYjEWq5q+248BI0KG0c0nd/qZIUveJphKVGq57VsCcdEY5Zk6bg9RYCH0SUwpXEuba1jKQhsAja5+hXayU+V8KA03HDWpKVS/COD3WXJbStV3Mq3hDR/0SsTSeq2aWAuk3vC/LoEMB7PmFfCTmwz35YKyoixqze8nMc4d8RwgOE987JUnrM7reqPZ7qn1Yl/38hOvReVdjTYCA6vUVaOSnObAMjvK8jNXyHnokZuOO5xILg6JGHFAQz9f5TlN/1oy9dU1sz90Ds8Kf0l+v42NOPKHNG2oMgAQph635Wt0umkVy0dINMz4K19Bod36tFoqEw6Qc2yE6A+cFCVm0Cfje0yKmrWiTVm3zKHKFP/tUdFRLmhXDKYvzvkfVSm3Qkc7xfzI=
