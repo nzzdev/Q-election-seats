@@ -12,15 +12,7 @@ const schemaString = JSON.parse(
     encoding: "utf-8"
   })
 );
-const schema = Enjoi(schemaString);
-
-const displayOptionsSchema = Enjoi(
-  JSON.parse(
-    fs.readFileSync(resourcesDir + "display-options-schema.json", {
-      encoding: "utf-8"
-    })
-  )
-);
+const schema = Enjoi.schema(schemaString);
 
 require("svelte/ssr/register");
 const staticTemplate = require(viewsDir + "HtmlStatic.html");
