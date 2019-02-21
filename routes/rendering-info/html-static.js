@@ -134,7 +134,7 @@ module.exports = {
       renderingData.toolRuntimeConfig = request.payload.toolRuntimeConfig;
     }
 
-    let svelteMarkup = staticTemplate.render(renderingData);
+    let svelteMarkup = staticTemplate.render(renderingData).html;
 
     let data = {
       stylesheets: [
