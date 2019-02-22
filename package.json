@@ -1,6 +1,6 @@
 {
   "name": "@nzz/q-election-seats",
-  "version": "2.7.1",
+  "version": "2.8.0",
   "description": "Q Election Seats",
   "keywords": [
     "storytelling",
@@ -19,6 +19,10 @@
     {
       "name": "Sharon Funke",
       "email": "sharon.funke@nzz.ch"
+    },
+    {
+      "name": "Philip Küng",
+      "email": "philip.kueng@nzz.ch"
     }
   ],
   "main": "index.js",
