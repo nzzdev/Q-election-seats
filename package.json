@@ -31,19 +31,19 @@
     "url": "git+https://github.com/nzzdev/Q-election-seats.git"
   },
   "dependencies": {
-    "autoprefixer": "^7.2.6",
-    "cssnano": "^3.10.0",
-    "d3": "^4.13.0",
-    "enjoi": "^2.1.0",
+    "autoprefixer": "^9.4.7",
+    "cssnano": "^4.1.8",
+    "d3": "^5.9.1",
+    "enjoi": "^5.0.2",
     "forever": "^0.15.3",
-    "hapi": "^17.5.4",
+    "hapi": "^18.1.0",
     "inert": "^5.1.0",
-    "joi": "^13.6.0",
+    "joi": "^14.3.1",
     "lodash": "^4.17.11",
     "node-sass": "^4.9.3",
-    "postcss": "^5.2.18",
-    "postcss-import": "^11.1.0",
-    "svelte": "1.22.3"
+    "postcss": "^7.0.14",
+    "postcss-import": "^12.0.1",
+    "svelte": "2.16.1"
   },
   "devDependencies": {
     "code": "^5.2.4",

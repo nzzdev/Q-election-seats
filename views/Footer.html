@@ -1,29 +1,29 @@
 <div class="s-q-item__footer">
-  {{#if notes}}
-    {{notes}}
-    {{#if shouldHaveSources || shouldHaveUpdateInfo}}&ndash;{{/if}}
-  {{/if}}
-  {{#if shouldHaveSources}}
-    {{#if sources.length > 1}} 
+  {#if notes}
+    {notes}
+    {#if shouldHaveSources || shouldHaveUpdateInfo}&ndash;{/if}
+  {/if}
+  {#if shouldHaveSources}
+    {#if sources.length > 1} 
       Quellen: 
-    {{else}} 
+    {:else} 
       Quelle: 
-    {{/if}} 
-    {{#each sources as source, index}}
+    {/if} 
+    {#each sources as source, index}
       <!-- 	If you separate DOM siblings with newlines whitespaces cannot be removed by svelte renderer
             To avoid unwanted whitespaces around commas separating each source, we keep render infos for sources at one line here.
             See also: https://github.com/sveltejs/svelte/issues/189  -->
-      {{#if source.text !== ''}}{{#if source.link && source.link.url && source.link.isValid}}<a href="{{source.link.url}}" target="blank" rel="noopener noreferrer">{{source.text}}</a>{{else}}{{source.text}}{{/if}}{{#if index !== sources.length - 1 && sources[index + 1] !== ''}}, {{/if}}{{/if}} 
-    {{/each}}
-    {{#if shouldHaveUpdateInfo}}&ndash;{{/if}}
-  {{/if}}
-  {{#if shouldHaveUpdateInfo}}Update {{updateInfo}}{{/if}}
+      {#if source.text !== ''}{#if source.link && source.link.url && source.link.isValid}<a href="{source.link.url}" target="blank" rel="noopener noreferrer">{source.text}</a>{:else}{source.text}{/if}{#if index !== sources.length - 1 && sources[index + 1] !== ''}, {/if}{/if} 
+    {/each}
+    {#if shouldHaveUpdateInfo}&ndash;{/if}
+  {/if}
+  {#if shouldHaveUpdateInfo}Update {updateInfo}{/if}
 </div>
 
 <script>
   export default {
     computed: {
-      updateInfo: (updatedDate) => {
+      updateInfo: ({ updatedDate }) => {
         let updated = new Date(updatedDate);
         if (updated.getTime()) {
           let now = new Date();
@@ -45,10 +45,10 @@
           }
         }
       },
-      shouldHaveUpdateInfo: (updatedDate, hideUpdatedDate) => {
+      shouldHaveUpdateInfo: ({ updatedDate, hideUpdatedDate }) => {
         return updatedDate !== undefined && !hideUpdatedDate;
       },
-      shouldHaveSources: (sources) => {
+      shouldHaveSources: ({ sources }) => {
         return sources !== undefined && sources.length > 0;
       }
     }
