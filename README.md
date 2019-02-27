@@ -1,5 +1,9 @@
 # Q Election Seats
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nzzdev/Q-election-seats.svg)](https://greenkeeper.io/)
+
+**Maintainer**: [benib](https://github.com/benib)
+
 Q election seats is one tool of the Q toolbox to display the allocation of seats according to parliamentary elections.
 
 ## Example

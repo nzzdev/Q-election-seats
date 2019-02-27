@@ -1,20 +1,20 @@
 <div class="q-election-seats" style="opacity: 0;">
-  <Header title='{{item.title}}' hideTitle='{{hideTitle}}' subtitle='{{item.subtitle}}' />
+  <Header title='{item.title}' hideTitle='{hideTitle}' subtitle='{item.subtitle}' />
   <div id="q-election-seats-svg-container" class="q-election-seats-svg-container"></div>
-  <div class="q-election-seats-total s-font-note">{{totalSeats}} Sitze</div>
+  <div class="q-election-seats-total s-font-note">{totalSeats} Sitze</div>
   <div class="q-election-seats-text-container">
     <div class="q-election-seats-legend">
-      {{#each electedPartyBunches as electedPartyBunch}}
-        <ElectionItems parties='{{electedPartyBunch}}' displayTrendClass='{{displayTrendClass}}'/>
-      {{/each}}
-      {{#if notElectedPartyBunches.length > 0}}
+      {#each electedPartyBunches as electedPartyBunch}
+        <ElectionItems parties='{electedPartyBunch}' displayTrendClass='{displayTrendClass}'/>
+      {/each}
+      {#if notElectedPartyBunches.length > 0}
         <div class="q-election-seats-separator s-color-gray-4"></div>
-        {{#each notElectedPartyBunches as notElectedPartyBunch}}
-          <ElectionItems parties='{{notElectedPartyBunch}}' displayTrendClass='{{displayTrendClass}}'/>
-        {{/each}}
-      {{/if}}
+        {#each notElectedPartyBunches as notElectedPartyBunch}
+          <ElectionItems parties='{notElectedPartyBunch}' displayTrendClass='{displayTrendClass}'/>
+        {/each}
+      {/if}
     </div>
-    <Footer notes='{{item.notes}}' sources='{{item.sources}}' updatedDate='{{item.updatedDate}}' hideUpdatedDate='{{hideUpdatedDate}}'/>
+    <Footer notes='{item.notes}' sources='{item.sources}' updatedDate='{item.updatedDate}' hideUpdatedDate='{hideUpdatedDate}'/>
   </div>
 </div>
 
@@ -26,23 +26,23 @@
 
   export default {
     computed: {
-      hideTitle: (toolRuntimeConfig) => {
+      hideTitle: ({ toolRuntimeConfig }) => {
         return toolRuntimeConfig.displayOptions && toolRuntimeConfig.displayOptions.hideTitle;
       },
-      parties: (item) => {
+      parties: ({ item }) => {
         return item.parties;
       },
-      sumSeats: (parties) => {
+      sumSeats: ({ parties }) => {
         return parties
           .map(party => party.seats || 0)
           .reduce((sum, partySeats) => {
             return sum + partySeats;
           }, 0);
       },
-      totalSeats: (item) => {
+      totalSeats: ({ item }) => {
         return item.totalSeats;
       },
-      displayTrendClass : (parties, sumSeats) => {
+      displayTrendClass : ({ parties, sumSeats }) => {
         let partiesWithPrevious = parties.filter(party => {
             return party.previous !== undefined
           });
@@ -51,7 +51,7 @@
         }
         return '';
       },
-      enhancedParties: (parties, totalSeats, sumSeats) => {
+      enhancedParties: ({ parties, totalSeats, sumSeats }) => {
         // add party object for vacant seats if total available seats 
         // is bigger than sum of all parties' seats
         let vacantSeats = totalSeats - sumSeats;
@@ -108,13 +108,13 @@
         })
         return parties;
       },
-      notElectedParties: (enhancedParties) => {
+      notElectedParties: ({ enhancedParties }) => {
         // filter all parties with no seats
         return enhancedParties.filter(party => {
           return party.seats !== undefined && party.seats === 0;
         });
       },
-      notElectedPartyBunches: (notElectedParties) => {
+      notElectedPartyBunches: ({ notElectedParties }) => {
         // split party array into two halfs and create another array out of it
         // in order to make a two columned legend if width is sufficient
         if (notElectedParties !== undefined && notElectedParties.length > 0) {
@@ -125,7 +125,7 @@
         }
         return notElectedParties;
       },
-      electedPartyBunches: (enhancedParties, notElectedParties) => {
+      electedPartyBunches: ({ enhancedParties, notElectedParties }) => {
         // filter all parties which have one or more seats
         let elected = enhancedParties;
         if (notElectedParties !== undefined && notElectedParties.length > 0) {
@@ -140,7 +140,7 @@
         elected = [partiesFirstHalf, partiesSecondHalf];
         return elected;
       },
-      hideUpdatedDate: (item) => {
+      hideUpdatedDate: ({ item }) => {
         return item.options && item.options.hideUpdatedDate
       }
     },

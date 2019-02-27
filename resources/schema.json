@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "title": "Parlamentswahlen Sitzverteilung",
   "properties": {
@@ -45,7 +45,9 @@
               "availabilityChecks": [
                 {
                   "type": "UserHasRole",
-                  "role": "expert-election-seats"
+                  "config": {
+                    "role": "expert-election-seats"
+                  }
                 }
               ]
             },
@@ -124,7 +126,9 @@
         "availabilityChecks": [
           {
             "type": "UserHasRole",
-            "role": "expert-election-seats"
+            "config": {
+              "role": "expert-election-seats"
+            }
           }
         ]
       },
