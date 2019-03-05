@@ -1,0 +1,121 @@
+{
+  "title": "Kantonsratswahl ZH 2019",
+  "subtitle": "Schlussresultat vom 25.02.2019 um 14:00:29 Uhr",
+  "totalSeats": 180,
+  "parties": [
+    {
+      "name": "IP ZH",
+      "seats": 0,
+      "color": {
+        "classAttribute": "s-viz-color-party-default-5"
+      }
+    },
+    {
+      "name": "JUSO",
+      "seats": 0,
+      "color": {
+        "classAttribute": "s-viz-color-party-default-5"
+      }
+    },
+    {
+      "name": "Piraten",
+      "seats": 0,
+      "color": {
+        "classAttribute": "s-viz-color-party-default-5"
+      }
+    },
+    {
+      "name": "AL",
+      "seats": 5,
+      "previous": 3,
+      "color": {
+        "classAttribute": "s-viz-color-party-al-5"
+      }
+    },
+    {
+      "name": "EDU",
+      "seats": 5,
+      "previous": 5,
+      "color": {
+        "classAttribute": "s-viz-color-party-edu-5"
+      }
+    },
+    {
+      "name": "BDP",
+      "seats": 5,
+      "previous": 6,
+      "color": {
+        "classAttribute": "s-viz-color-party-bdp-5"
+      }
+    },
+    {
+      "name": "EVP",
+      "seats": 8,
+      "previous": 7,
+      "color": {
+        "classAttribute": "s-viz-color-party-evp-5"
+      }
+    },
+    {
+      "name": "CVP",
+      "seats": 9,
+      "previous": 9,
+      "color": {
+        "classAttribute": "s-viz-color-party-cvp-5"
+      }
+    },
+    {
+      "name": "Grüne",
+      "seats": 13,
+      "previous": 19,
+      "color": {
+        "classAttribute": "s-viz-color-party-gps-5"
+      }
+    },
+    {
+      "name": "glp",
+      "seats": 14,
+      "previous": 19,
+      "color": {
+        "classAttribute": "s-viz-color-party-glp-5"
+      }
+    },
+    {
+      "name": "FDP",
+      "seats": 31,
+      "previous": 23,
+      "color": {
+        "classAttribute": "s-viz-color-party-fdp-5"
+      }
+    },
+    {
+      "name": "SP",
+      "seats": 36,
+      "previous": 35,
+      "color": {
+        "classAttribute": "s-viz-color-party-sp-5"
+      }
+    },
+    {
+      "name": "SVP",
+      "seats": 54,
+      "previous": 54,
+      "color": {
+        "classAttribute": "s-viz-color-party-svp-5"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "link": {
+        "url": "https://statistik.zh.ch",
+        "isValid": true
+      },
+      "text": "Statistisches Amt des Kantons Zürich"
+    }
+  ],
+  "options": {
+    "hideUpdatedDate": true
+  },
+  "updatedDate": "2019-03-05T13:59:55.309Z"
+}
