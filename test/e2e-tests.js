@@ -2,6 +2,7 @@ const Lab = require("lab");
 const Code = require("code");
 const Hapi = require("hapi");
 const lab = (exports.lab = Lab.script());
+const glob = require("glob");
 
 const expect = Code.expect;
 const before = lab.before;
@@ -127,4 +128,25 @@ lab.experiment("fixture data endpoint", () => {
     expect(response.statusCode).to.be.equal(200);
     expect(response.result.length).to.be.equal(4);
   });
+});
+
+lab.experiment("all fixtures render", async () => {
+  const fixtureFiles = glob.sync(
+    `${__dirname}/../resources/fixtures/data/*.json`
+  );
+  for (let fixtureFile of fixtureFiles) {
+    const fixture = require(fixtureFile);
+    it(`doesnt fail in rendering fixture ${fixture.title}`, async () => {
+      const request = {
+        method: "POST",
+        url: "/rendering-info/html-static",
+        payload: {
+          item: fixture,
+          toolRuntimeConfig: {}
+        }
+      };
+      const response = await server.inject(request);
+      expect(response.statusCode).to.be.equal(200);
+    });
+  }
 });
