@@ -7,11 +7,11 @@ Q Election Seats is one tool of the Q toolbox to display the allocation of seats
 ## Table of contents
 
 - [Installation](#installation)
+- [Configuration](#configuration)
 - [Development](#development)
 - [Testing](#testing)
-- [Tool implementation details](#tool-implementation-details)
-- [Features](#features)
-- [Options](#options)
+- [Deployment](#deployment)
+- [Functionality](#functionality)
 - [License](#license)
 
 ## Installation
@@ -64,6 +64,22 @@ When changing or implementing...
 
 - A `route`, it needs to be tested in the `e2e-tests.js` file
 - Something on the frontend, it needs to be tested in the `dom-tests.js` file
+
+[to the top](#table-of-contents)
+
+## Deployment
+
+We provide automatically built docker images at https://hub.docker.com/r/nzzonline/q-election-seats/.
+There are three options for deployment:
+
+- use the provided images
+- build your own docker images
+- deploy the service using another technology
+
+### Use the provided docker images
+
+1. Deploy `nzzonline/q-election-seats` to a docker environment
+2. Set the ENV variables as described in the [configuration section](#configuration)
 
 [to the top](#table-of-contents)
 
