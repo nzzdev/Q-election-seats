@@ -11,10 +11,6 @@ $partyListTrendArrow: 14px;
 .q-election-seats {
   opacity: 1 !important;
 
-  &-subtitle {
-    margin-bottom: 19px;
-  }
-
   &-svg {
     &-container {
       width: 100%;
@@ -97,7 +93,7 @@ $partyListTrendArrow: 14px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-    }  
+    }
   }
 
   & .q-election-seats-party-item-seats {
@@ -114,7 +110,6 @@ $partyListTrendArrow: 14px;
   }
 
   & .q-election-seats-party-item-trend {
-   
     &-icon {
       line-height: 1;
     }
