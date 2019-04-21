@@ -45,7 +45,7 @@
     "node-sass": "^4.11.0",
     "postcss": "^7.0.14",
     "postcss-import": "^12.0.1",
-    "svelte": "2.16.1"
+    "svelte": "3.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^9.5.1",
