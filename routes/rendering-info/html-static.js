@@ -1,6 +1,6 @@
 const fs = require("fs");
 const Enjoi = require("enjoi");
-const Joi = require("joi");
+const Joi = require("@hapi/joi");
 const _ = require("lodash");
 const resourcesDir = __dirname + "/../../resources/";
 const viewsDir = __dirname + "/../../views/";

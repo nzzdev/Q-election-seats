@@ -1,6 +1,6 @@
 const Lab = require("lab");
 const Code = require("code");
-const Hapi = require("hapi");
+const Hapi = require("@hapi/hapi");
 const lab = (exports.lab = Lab.script());
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
