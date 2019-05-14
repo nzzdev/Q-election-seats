@@ -1,29 +1,24 @@
 dist: trusty
 sudo: true
 services:
-- docker
+  - docker
 language: node_js
 node_js:
-- '10'
-install:
-- npm install
-before_script:
-- DOCKER_IMAGE_NAME="q-election-seats"
-- DOCKER_TAG=${TRAVIS_BRANCH/\//_}
-script:
-- npm run build
-- npm test
-- docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .
-- echo $DOCKER_PASSWORD | docker login -u="$DOCKER_USERNAME" --password-stdin; docker
-  tag $DOCKER_IMAGE_NAME:$DOCKER_TAG nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG; docker
-  push nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG;
-- if [ "$TRAVIS_BRANCH" == "staging" ] && [ $TRAVIS_PULL_REQUEST == "false" ]; then
-  docker run --rm -it -e RANCHER_URL -e CATTLE_ACCESS_KEY -e CATTLE_SECRET_KEY etlweather/gaucho
-  upgrade $RANCHER_SERVICE_ID_STAGING --auto_complete --start_first --imageUuid="docker:nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG"
-  || true; fi
+  - "10"
 cache:
   directories:
-  - node_modules
+    - node_modules
+install:
+  - npm install
+before_script:
+  - DOCKER_IMAGE_NAME="q-election-seats"
+  - DOCKER_TAG=${TRAVIS_BRANCH//[^a-zA-Z0-9\_\-\.]/_}
+script:
+  - npm run build
+  - npm run test
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then docker build -t $DOCKER_IMAGE_NAME:$DOCKER_TAG .; fi'
+after_success:
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo $DOCKER_PASSWORD | docker login -u="$DOCKER_USERNAME" --password-stdin; docker tag $DOCKER_IMAGE_NAME:$DOCKER_TAG nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG; docker push nzzonline/$DOCKER_IMAGE_NAME:$DOCKER_TAG; fi'
 notifications:
   slack:
     secure: JIvOOoUy9Ys0a6NaC7jINi6EDPs8TQ25XM+a8BtBPBkq4kzGDSWvdm5r+0vEZlUz/G8l3AIM7exPIKxwQDfpnkuduyzhQ2N4Fr1h+UCdrssbrm8F4/xq/mM4ipEkNi337YV1BL/7c7qvuMERjWD1RwMGk32tQMNC2haQ2ofYp7rlOvnXC2AtyMZU0nGy27iWFOOvvKIxivHlIcDa/2hndhvQQSGmoGRs5rv29LM5Zley3gXUxn7Fcn6DC9egIJDPPtrvhPSvifYhRmDw8YXWPPrtTO+R8t15nDqvrTrYjEWq5q+248BI0KG0c0nd/qZIUveJphKVGq57VsCcdEY5Zk6bg9RYCH0SUwpXEuba1jKQhsAja5+hXayU+V8KA03HDWpKVS/COD3WXJbStV3Mq3hDR/0SsTSeq2aWAuk3vC/LoEMB7PmFfCTmwz35YKyoixqze8nMc4d8RwgOE987JUnrM7reqPZ7qn1Yl/38hOvReVdjTYCA6vUVaOSnObAMjvK8jNXyHnokZuOO5xILg6JGHFAQz9f5TlN/1oy9dU1sz90Ds8Kf0l+v42NOPKHNG2oMgAQph635Wt0umkVy0dINMz4K19Bod36tFoqEw6Qc2yE6A+cFCVm0Cfje0yKmrWiTVm3zKHKFP/tUdFRLmhXDKYvzvkfVSm3Qkc7xfzI=
