@@ -43,18 +43,18 @@
     "d3": "^5.9.7",
     "enjoi": "^5.0.2",
     "joi": "^14.3.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.14",
     "postcss": "^7.0.17",
     "postcss-import": "^12.0.1",
-    "svelte": "^3.6.4"
+    "svelte": "^3.6.7"
   },
   "devDependencies": {
     "@hapi/code": "^5.3.1",
     "@hapi/lab": "^18.1.2",
-    "autoprefixer": "^9.6.0",
+    "autoprefixer": "^9.6.1",
     "cssnano": "^4.1.10",
     "glob": "^7.1.4",
     "jsdom": "^14.1.0",
-    "sass": "^1.22.3"
+    "sass": "^1.22.4"
   }
 }
