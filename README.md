@@ -89,6 +89,8 @@ The tool structure follows the general structure of each Q tool. Further informa
 
 Here is what the tool looks like on mobile and other devices. The example shows the intermediate seat allocation of the elections in the Netherlands in 2017. It's in German because we do not have multilanguage support (yet).
 
+Q Election Seats uses [svelte3](https://svelte.dev) to render the markup on server-side.
+
 ![Seat allocation as shown on other devices](./readme-images/seats_desk.png)
 ![Seat allocation as shown on mobile](./readme-images/seats_mob.png)
 
