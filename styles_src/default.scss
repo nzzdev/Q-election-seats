@@ -2,7 +2,7 @@ $defaultMargin: 8px;
 $colorBoxSize: 17px;
 $totalSeatsWidth: 40px;
 $totalSeatsHeight: 36px;
-$legendMarginTop: 9px;
+$legendMarginTop: $defaultMargin * 2;
 $textContainerMarginTop: 22px;
 $partyListNumberMargin: 3px;
 $partyListTrendNumber: 30px;
@@ -10,6 +10,7 @@ $partyListTrendArrow: 14px;
 
 .q-election-seats {
   opacity: 1 !important;
+  position: relative;
 
   &-svg {
     &-container {
@@ -29,17 +30,11 @@ $partyListTrendArrow: 14px;
   }
 
   &-total {
-    position: relative;
+    position: absolute;
     width: $totalSeatsWidth;
-    height: $totalSeatsHeight;
-    top: -$totalSeatsHeight;
     left: calc(50% - (#{$totalSeatsWidth} / 2));
+    transform: translateY(-100%);
     text-align: center;
-  }
-
-  &-text-container {
-    position: relative;
-    top: -$totalSeatsHeight + $textContainerMarginTop - $legendMarginTop;
   }
 
   &-legend {
