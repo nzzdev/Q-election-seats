@@ -1,4 +1,15 @@
 <script>
+  import * as d3format from 'd3-format';
+
+  const locale = d3format.formatDefaultLocale({
+    decimal: ",",
+    thousands: " ", // this is a viertelgeviert U+2005
+    type: " ",
+    minus: "–" // U+2013
+  });
+
+  const formatSigned = d3format.format('+~r');
+
   export let parties;
   export let displayTrendClass;
 </script>
@@ -12,7 +23,7 @@
         <div class="q-election-seats-party-item-seats-number">{party.seats}</div>
         <div class="q-election-seats-party-item-seats-text">Sitz{#if party.seats > 1 || party.seats === 0}e{/if}</div>
         {#if !party.isVacant && party.hasPrevious}
-          <div class="q-election-seats-party-item-trend-number">{#if party.trend > 0}+{/if}{#if party.trend !== 0}{party.trend}{/if}</div>
+          <div class="q-election-seats-party-item-trend-number">{#if party.trend !== 0}{formatSigned(party.trend)}{/if}</div>
           <div class="q-election-seats-party-item-trend-icon s-color-gray-8">
             <svg
               style="transform: rotate({party.trendDegree}deg);"
