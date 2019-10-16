@@ -1,6 +1,6 @@
 # Q Election Seats [![Build Status](https://travis-ci.com/nzzdev/Q-election-seats.svg?branch=dev)](https://travis-ci.com/nzzdev/Q-election-seats) [![Greenkeeper badge](https://badges.greenkeeper.io/nzzdev/Q-election-seats.svg)](https://greenkeeper.io/)
 
-**Maintainer**: [benib](https://github.com/benib)
+**Maintainer**: [philipkueng](https://github.com/philipkueng)
 
 Q Election Seats is one tool of the Q toolbox to display the allocation of seats according to parliamentary elections. Test it in the [playground](https://q-playground.st.nzz.ch/).
 
