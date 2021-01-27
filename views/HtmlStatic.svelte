@@ -131,7 +131,9 @@
   <div
     id="q-election-seats-svg-container"
     class="q-election-seats-svg-container" />
-  <div class="q-election-seats-total s-font-note">{item.totalSeats} Sitze</div>
+  <div class="q-election-seats-total s-font-note">
+    <span class="s-font-note--tabularnums">{item.totalSeats}</span> Sitze
+  </div>
   <div class="q-election-seats-text-container">
     <div class="q-election-seats-legend">
       {#each electedPartyBunches as electedPartyBunch}
