@@ -5,6 +5,7 @@
 
   export let item;
   export let displayOptions;
+  export let isWide;
 
   let hideTitle = displayOptions.hideTitle;
   let sumSeats = getSumSeats(item);
@@ -135,17 +136,19 @@
     <span class="s-font-note--tabularnums">{item.totalSeats}</span> Sitze
   </div>
   <div class="q-election-seats-text-container">
-    <div class="q-election-seats-legend">
+    <div class="q-election-seats-legend" class:q-election-seats-legend--wide={isWide}>
       {#each electedPartyBunches as electedPartyBunch}
-        <ElectionItems parties={electedPartyBunch} {displayTrendClass} />
+        <ElectionItems parties={electedPartyBunch} {displayTrendClass} {isWide} />
       {/each}
-      {#if notElectedPartyBunches.length > 0}
-        <div class="q-election-seats-separator s-color-gray-4" />
-        {#each notElectedPartyBunches as notElectedPartyBunch}
-          <ElectionItems parties={notElectedPartyBunch} {displayTrendClass} />
-        {/each}
-      {/if}
     </div>
+    {#if notElectedPartyBunches.length > 0}
+      <div class="q-election-seats-separator s-color-gray-4" />
+      <div class="q-election-seats-legend" class:q-election-seats-legend--wide={isWide}>
+        {#each notElectedPartyBunches as notElectedPartyBunch}
+          <ElectionItems parties={notElectedPartyBunch} {displayTrendClass} {isWide} />
+        {/each}
+      </div>
+    {/if}
     <Footer
       notes={item.notes}
       sources={item.sources}
