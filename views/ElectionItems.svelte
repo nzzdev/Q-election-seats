@@ -12,9 +12,10 @@
 
   export let parties;
   export let displayTrendClass;
+  export let isWide;
 </script>
 
-<div class="q-election-seats-party-list {displayTrendClass}">
+<div class="q-election-seats-party-list {displayTrendClass}" class:q-election-seats-party-list--wide={isWide}>
   {#each parties as party}
     <div class="q-election-seats-party-item s-font-note-s">
       <div class="q-election-seats-party-item-info-color {party.colorClass}" style={party.colorStyle} />
