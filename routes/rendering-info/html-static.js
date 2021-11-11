@@ -98,7 +98,6 @@ module.exports = {
       }
     },
     cache: false, // do not send cache control header to let it be added by Q Server
-    cors: true
   },
   handler: async function(request, h) {
     let item = request.payload.item;
