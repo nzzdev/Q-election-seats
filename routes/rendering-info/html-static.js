@@ -101,10 +101,12 @@ module.exports = {
   },
   handler: async function(request, h) {
     let item = request.payload.item;
-    
+
     // gray levels are limited to these specific ones because others are either used or too light
     const defaultGrayLevels = [3, 5, 6, 7, 8, 9];
     const contentWidth = request.payload.toolRuntimeConfig.size ? request.payload.toolRuntimeConfig.size.width[0].value : 0;
+
+    console.log('contentWidth', contentWidth);
 
     // if party has no color we assign a gray level as default
     item.parties.map((party, index) => {
@@ -126,7 +128,7 @@ module.exports = {
     let renderingData = {
       item: item,
       displayOptions: request.payload.toolRuntimeConfig.displayOptions || {},
-      isWide: contentWidth > 400 ? true : false
+      isWide: contentWidth > 450 ? true : false
     };
 
     if (request.query.updatedDate) {
@@ -149,7 +151,7 @@ module.exports = {
       markup: svelteMarkup
     };
 
-    let isSophieVizColorDefined = false;
+    let isSophieVizColorDefined = false;``
     let parties = renderingData.item.parties;
     if (parties !== undefined) {
       parties.forEach(party => {
