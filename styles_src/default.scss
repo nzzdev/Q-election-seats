@@ -38,19 +38,11 @@ $partyListTrendArrow: 14px;
     text-align: center;
   }
 
-  &-text-container {
-    margin-top: $legendMarginTop;
-  }
-
   &-legend {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
     margin-right: -8px;
-  }
-
-  &-legend--wide {
-    flex-direction: row;
   }
 
   &-separator {
@@ -66,10 +58,6 @@ $partyListTrendArrow: 14px;
     flex-wrap: wrap;
     margin-right: 8px;
     width: calc(100% - 8px);
-  }
-
-  &-party-list--wide {
-    width: calc(50% - 8px);
   }
 
   &-footer {
@@ -128,4 +116,25 @@ $partyListTrendArrow: 14px;
 
 .q-election-seats-display-trend .q-election-seats-party-item-trend-space {
   width: $partyListTrendNumber + $partyListNumberMargin + $partyListTrendArrow;
+}
+
+qes-txt-cntr {
+  container-name: qes-txt-cntr;
+  container-type: inline-size;
+  display: block;
+  margin-top: $legendMarginTop;
+}
+
+/**
+ * Responsive
+ */
+
+@container qes-txt-cntr (min-width: 500px) {
+  .q-election-seats-legend {
+    flex-direction: row;
+  }
+
+  .q-election-seats-party-list {
+    width: calc(50% - 8px);
+  }
 }
