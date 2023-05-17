@@ -126,7 +126,6 @@ module.exports = {
     let renderingData = {
       item: item,
       displayOptions: request.payload.toolRuntimeConfig.displayOptions || {},
-      isWide: contentWidth > 450 ? true : false
     };
 
     if (request.query.updatedDate) {
@@ -149,7 +148,7 @@ module.exports = {
       markup: svelteMarkup
     };
 
-    let isSophieVizColorDefined = false;``
+    let isSophieVizColorDefined = false;
     let parties = renderingData.item.parties;
     if (parties !== undefined) {
       parties.forEach(party => {
