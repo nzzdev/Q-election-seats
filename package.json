@@ -1,6 +1,6 @@
 {
   "name": "@nzz/q-election-seats",
-  "version": "2.10.4",
+  "version": "2.10.5",
   "description": "Q Election Seats",
   "keywords": [
     "storytelling",
@@ -27,6 +27,8 @@
   ],
   "main": "index.js",
   "scripts": {
+    "start": "npx nodemon --watch routes --watch views --watch styles_src --ext js,svelte,scss --exec 'npm run serve'",
+    "serve": "npm run build && node index.js",
     "build": "rm -rf styles && mkdir styles && node tasks/build.js",
     "test": "lab -a @hapi/code -c -P tests --verbose --leaks"
   },
@@ -56,6 +58,7 @@
     "cssnano": "^4.1.10",
     "glob": "^7.1.6",
     "jsdom": "^14.1.0",
+    "nodemon": "^2.0.22",
     "sass": "^1.32.7"
   }
 }

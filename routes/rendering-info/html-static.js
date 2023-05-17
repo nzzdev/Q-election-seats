@@ -101,7 +101,7 @@ module.exports = {
   },
   handler: async function(request, h) {
     let item = request.payload.item;
-    
+
     // gray levels are limited to these specific ones because others are either used or too light
     const defaultGrayLevels = [3, 5, 6, 7, 8, 9];
     const contentWidth = request.payload.toolRuntimeConfig.size ? request.payload.toolRuntimeConfig.size.width[0].value : 0;
@@ -126,7 +126,6 @@ module.exports = {
     let renderingData = {
       item: item,
       displayOptions: request.payload.toolRuntimeConfig.displayOptions || {},
-      isWide: contentWidth > 400 ? true : false
     };
 
     if (request.query.updatedDate) {
